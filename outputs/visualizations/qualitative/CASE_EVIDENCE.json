@@ -1,0 +1,574 @@
+{
+  "tier": "Medium",
+  "run_id": "benchmark-20261002T075505Z",
+  "inference_rerun": false,
+  "benchmark_values_changed": false,
+  "confidence": 0.25,
+  "matching_iou": 0.5,
+  "ignore_prediction_ioa": 0.5,
+  "cases": [
+    {
+      "sequence": "MOTS20-05",
+      "frame": 419,
+      "reason": "additional valid instance",
+      "image": "datasets/MOTS/MOTS/train/MOTS20-05/img1/000419.jpg",
+      "image_sha256": "6d7ec3be5d8c2a1ee328b449d9fcc85d713c61c95ff63d235d3b5229ecd26c95",
+      "gt_sha256": "74bc32152484c4012a65a6f6e222e24dfbf3bf536aab91f77c4abaff4a93e2e7",
+      "models": [
+        {
+          "model": "YOLO26m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolo26m-seg/predictions/MOTS20-05_000419.json.gz",
+          "prediction_sha256": "dd3a005af95f4af3b66778405bdb6add6e5f81710ec524bdf0edd05c6da6a376",
+          "tp": 5,
+          "fp": 0,
+          "fn": 1,
+          "ignored_predictions": 1,
+          "fn_ids": [
+            2054
+          ],
+          "matches": [
+            {
+              "gt_id": 2128,
+              "iou": 0.9241123953214755
+            },
+            {
+              "gt_id": 2042,
+              "iou": 0.9003059663437022
+            },
+            {
+              "gt_id": 2038,
+              "iou": 0.7745649948822927
+            },
+            {
+              "gt_id": 2028,
+              "iou": 0.6868764389869532
+            },
+            {
+              "gt_id": 2002,
+              "iou": 0.5277777777777778
+            }
+          ],
+          "matched_mask_iou": "0.7627275146624403"
+        },
+        {
+          "model": "YOLO11m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolo11m-seg/predictions/MOTS20-05_000419.json.gz",
+          "prediction_sha256": "b34f953cc839af89ea5f10a6cb2ef19b2f4f76f1a85bb7437d186a2e615d66af",
+          "tp": 4,
+          "fp": 1,
+          "fn": 2,
+          "ignored_predictions": 2,
+          "fn_ids": [
+            2002,
+            2054
+          ],
+          "matches": [
+            {
+              "gt_id": 2042,
+              "iou": 0.8936386768447837
+            },
+            {
+              "gt_id": 2038,
+              "iou": 0.7579051383399209
+            },
+            {
+              "gt_id": 2128,
+              "iou": 0.9533841163392499
+            },
+            {
+              "gt_id": 2028,
+              "iou": 0.552212389380531
+            }
+          ],
+          "matched_mask_iou": "0.7892850802261213"
+        },
+        {
+          "model": "YOLOv8m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolov8m-seg/predictions/MOTS20-05_000419.json.gz",
+          "prediction_sha256": "c33174151661328ccfd727d32ccb537324af5c3db2d9527eb4073d9930ff9526",
+          "tp": 4,
+          "fp": 0,
+          "fn": 2,
+          "ignored_predictions": 1,
+          "fn_ids": [
+            2002,
+            2054
+          ],
+          "matches": [
+            {
+              "gt_id": 2042,
+              "iou": 0.8763933614069854
+            },
+            {
+              "gt_id": 2128,
+              "iou": 0.9321166337192883
+            },
+            {
+              "gt_id": 2038,
+              "iou": 0.7622828784119107
+            },
+            {
+              "gt_id": 2028,
+              "iou": 0.562575210589651
+            }
+          ],
+          "matched_mask_iou": "0.7833420210319588"
+        }
+      ],
+      "comparison_sha256": "19874b39918d0ea411d325e3e8c60d18c7deddcd133791d9f8e5a505e2fb932c"
+    },
+    {
+      "sequence": "MOTS20-09",
+      "frame": 263,
+      "reason": "shared misses and false positives",
+      "image": "datasets/MOTS/MOTS/train/MOTS20-09/img1/000263.jpg",
+      "image_sha256": "ca55a06d24fa0cbfd76b65c8ce9e3f98f842ee992c749a3b0db788ac8f6acf49",
+      "gt_sha256": "73c59a3d52469d81084f99c7e2a0c711a99e9fb4152f6aa839fc26e5e03fa383",
+      "models": [
+        {
+          "model": "YOLO26m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolo26m-seg/predictions/MOTS20-09_000263.json.gz",
+          "prediction_sha256": "22e69968036b86c3253eb2ed1cae48856ca6b45e7d9e7c77867ba4a9be66f15d",
+          "tp": 9,
+          "fp": 1,
+          "fn": 4,
+          "ignored_predictions": 1,
+          "fn_ids": [
+            2001,
+            2002,
+            2011,
+            2023
+          ],
+          "matches": [
+            {
+              "gt_id": 2013,
+              "iou": 0.8941903019213174
+            },
+            {
+              "gt_id": 2029,
+              "iou": 0.9136619806834133
+            },
+            {
+              "gt_id": 2008,
+              "iou": 0.872924570635989
+            },
+            {
+              "gt_id": 2012,
+              "iou": 0.891943215339233
+            },
+            {
+              "gt_id": 2021,
+              "iou": 0.8631710646041856
+            },
+            {
+              "gt_id": 2010,
+              "iou": 0.8339095654531896
+            },
+            {
+              "gt_id": 2022,
+              "iou": 0.8712045616535994
+            },
+            {
+              "gt_id": 2018,
+              "iou": 0.5722708067210376
+            },
+            {
+              "gt_id": 2007,
+              "iou": 0.727378754009136
+            }
+          ],
+          "matched_mask_iou": "0.8267394245579001"
+        },
+        {
+          "model": "YOLO11m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolo11m-seg/predictions/MOTS20-09_000263.json.gz",
+          "prediction_sha256": "14350f8050f661eb024bafbd1139b8972ae5b7d46ecee15e482b2dcc2e51914f",
+          "tp": 9,
+          "fp": 1,
+          "fn": 4,
+          "ignored_predictions": 1,
+          "fn_ids": [
+            2001,
+            2002,
+            2011,
+            2023
+          ],
+          "matches": [
+            {
+              "gt_id": 2013,
+              "iou": 0.8631757875449789
+            },
+            {
+              "gt_id": 2029,
+              "iou": 0.8785076787006513
+            },
+            {
+              "gt_id": 2008,
+              "iou": 0.8422232711824404
+            },
+            {
+              "gt_id": 2012,
+              "iou": 0.8788542666256269
+            },
+            {
+              "gt_id": 2010,
+              "iou": 0.7708228167592125
+            },
+            {
+              "gt_id": 2022,
+              "iou": 0.8444398167430237
+            },
+            {
+              "gt_id": 2021,
+              "iou": 0.8268728222996515
+            },
+            {
+              "gt_id": 2018,
+              "iou": 0.5108411019168325
+            },
+            {
+              "gt_id": 2007,
+              "iou": 0.6848063933022548
+            }
+          ],
+          "matched_mask_iou": "0.7889493283416303"
+        },
+        {
+          "model": "YOLOv8m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolov8m-seg/predictions/MOTS20-09_000263.json.gz",
+          "prediction_sha256": "ba209f04701ece10777706bc5591682ebcebbd2e15123a641995f00bebd50d50",
+          "tp": 8,
+          "fp": 2,
+          "fn": 5,
+          "ignored_predictions": 2,
+          "fn_ids": [
+            2001,
+            2002,
+            2011,
+            2018,
+            2023
+          ],
+          "matches": [
+            {
+              "gt_id": 2029,
+              "iou": 0.8809475684197761
+            },
+            {
+              "gt_id": 2013,
+              "iou": 0.8800687518375285
+            },
+            {
+              "gt_id": 2008,
+              "iou": 0.848683166745994
+            },
+            {
+              "gt_id": 2012,
+              "iou": 0.8762982398600634
+            },
+            {
+              "gt_id": 2010,
+              "iou": 0.7793576551294045
+            },
+            {
+              "gt_id": 2022,
+              "iou": 0.8543111297891713
+            },
+            {
+              "gt_id": 2021,
+              "iou": 0.8419946926138877
+            },
+            {
+              "gt_id": 2007,
+              "iou": 0.6077498899163364
+            }
+          ],
+          "matched_mask_iou": "0.8211763867890202"
+        }
+      ],
+      "comparison_sha256": "18600f9c96fb1ecfb73aa302bfeab14ceb2c128048337ce866952923ff5c0a0e"
+    },
+    {
+      "sequence": "MOTS20-02",
+      "frame": 1,
+      "reason": "counterexample / detection trade-off",
+      "image": "datasets/MOTS/MOTS/train/MOTS20-02/img1/000001.jpg",
+      "image_sha256": "41ff65408c5338f4a83035fd12e9f5f7b658ee82feacf4512655677032636597",
+      "gt_sha256": "3442c764c43adc9667b025d030e62d54cff9d337ea7893b1fb6c60de296e76d0",
+      "models": [
+        {
+          "model": "YOLO26m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolo26m-seg/predictions/MOTS20-02_000001.json.gz",
+          "prediction_sha256": "128ff152df82f603806094e188c830a6609bb65c9c6ed968fa4786f17d8dfbda",
+          "tp": 8,
+          "fp": 2,
+          "fn": 4,
+          "ignored_predictions": 4,
+          "fn_ids": [
+            2017,
+            2020,
+            2023,
+            2031
+          ],
+          "matches": [
+            {
+              "gt_id": 2002,
+              "iou": 0.8656657206506149
+            },
+            {
+              "gt_id": 2008,
+              "iou": 0.8217036598149583
+            },
+            {
+              "gt_id": 2003,
+              "iou": 0.819366982710541
+            },
+            {
+              "gt_id": 2019,
+              "iou": 0.7477966497402673
+            },
+            {
+              "gt_id": 2014,
+              "iou": 0.7737679472254559
+            },
+            {
+              "gt_id": 2015,
+              "iou": 0.7886503067484663
+            },
+            {
+              "gt_id": 2018,
+              "iou": 0.7598270440251572
+            },
+            {
+              "gt_id": 2026,
+              "iou": 0.7516752069373276
+            }
+          ],
+          "matched_mask_iou": "0.7910566897315985"
+        },
+        {
+          "model": "YOLO11m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolo11m-seg/predictions/MOTS20-02_000001.json.gz",
+          "prediction_sha256": "8ce6d33536349114414792c0172df73717305a75706c9fbe816610651aae00e6",
+          "tp": 7,
+          "fp": 0,
+          "fn": 5,
+          "ignored_predictions": 3,
+          "fn_ids": [
+            2017,
+            2020,
+            2023,
+            2026,
+            2031
+          ],
+          "matches": [
+            {
+              "gt_id": 2002,
+              "iou": 0.8464608275572358
+            },
+            {
+              "gt_id": 2003,
+              "iou": 0.8333567613157155
+            },
+            {
+              "gt_id": 2008,
+              "iou": 0.7824793243775434
+            },
+            {
+              "gt_id": 2019,
+              "iou": 0.7721304531977975
+            },
+            {
+              "gt_id": 2014,
+              "iou": 0.68853591160221
+            },
+            {
+              "gt_id": 2015,
+              "iou": 0.7553889409559512
+            },
+            {
+              "gt_id": 2018,
+              "iou": 0.7340909090909091
+            }
+          ],
+          "matched_mask_iou": "0.7732061611567661"
+        },
+        {
+          "model": "YOLOv8m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolov8m-seg/predictions/MOTS20-02_000001.json.gz",
+          "prediction_sha256": "b49c5ee6d903733381879464f0a1a4595a4eafcbd22ce4261594ab9db1e9668b",
+          "tp": 9,
+          "fp": 1,
+          "fn": 3,
+          "ignored_predictions": 5,
+          "fn_ids": [
+            2017,
+            2023,
+            2031
+          ],
+          "matches": [
+            {
+              "gt_id": 2002,
+              "iou": 0.8455162921516411
+            },
+            {
+              "gt_id": 2003,
+              "iou": 0.8118839763446917
+            },
+            {
+              "gt_id": 2008,
+              "iou": 0.7889679870725422
+            },
+            {
+              "gt_id": 2019,
+              "iou": 0.7299257368298909
+            },
+            {
+              "gt_id": 2014,
+              "iou": 0.6668896321070235
+            },
+            {
+              "gt_id": 2018,
+              "iou": 0.7006079027355623
+            },
+            {
+              "gt_id": 2015,
+              "iou": 0.7604229607250755
+            },
+            {
+              "gt_id": 2026,
+              "iou": 0.639871382636656
+            },
+            {
+              "gt_id": 2020,
+              "iou": 0.55044612216884
+            }
+          ],
+          "matched_mask_iou": "0.7216146658635471"
+        }
+      ],
+      "comparison_sha256": "40305ea32b85a6b597eb9abdc1f9ff52f4f2292c1bf3298db641c2af14daeae5"
+    },
+    {
+      "sequence": "MOTS20-09",
+      "frame": 1,
+      "reason": "similar outputs / near-tie check",
+      "image": "datasets/MOTS/MOTS/train/MOTS20-09/img1/000001.jpg",
+      "image_sha256": "e4b1c40c44d53489f191e1099156ad57d3963d8c434615750fba0065a8a572af",
+      "gt_sha256": "73c59a3d52469d81084f99c7e2a0c711a99e9fb4152f6aa839fc26e5e03fa383",
+      "models": [
+        {
+          "model": "YOLO26m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolo26m-seg/predictions/MOTS20-09_000001.json.gz",
+          "prediction_sha256": "ec21da32b2c405f6fc6f58549f95c454ecc66f685a6d1d628693dd376a2b7e7e",
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "ignored_predictions": 3,
+          "fn_ids": [],
+          "matches": [
+            {
+              "gt_id": 2023,
+              "iou": 0.8883266087670109
+            },
+            {
+              "gt_id": 2019,
+              "iou": 0.8858428675561754
+            },
+            {
+              "gt_id": 2022,
+              "iou": 0.7848317000426076
+            },
+            {
+              "gt_id": 2001,
+              "iou": 0.7629118773946361
+            },
+            {
+              "gt_id": 2021,
+              "iou": 0.7788510421962379
+            },
+            {
+              "gt_id": 2020,
+              "iou": 0.7370782133801443
+            }
+          ],
+          "matched_mask_iou": "0.8063070515561352"
+        },
+        {
+          "model": "YOLO11m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolo11m-seg/predictions/MOTS20-09_000001.json.gz",
+          "prediction_sha256": "e929fcb8ea55c46330dfca2be2c3190e3a7ed5ff4ac49f2a46b0fe2733a91126",
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "ignored_predictions": 3,
+          "fn_ids": [],
+          "matches": [
+            {
+              "gt_id": 2019,
+              "iou": 0.8517527675276753
+            },
+            {
+              "gt_id": 2023,
+              "iou": 0.861816373881339
+            },
+            {
+              "gt_id": 2001,
+              "iou": 0.7057031526744598
+            },
+            {
+              "gt_id": 2022,
+              "iou": 0.7093429927554334
+            },
+            {
+              "gt_id": 2021,
+              "iou": 0.6879947229551451
+            },
+            {
+              "gt_id": 2020,
+              "iou": 0.6857722078879469
+            }
+          ],
+          "matched_mask_iou": "0.7503970362803333"
+        },
+        {
+          "model": "YOLOv8m-Seg",
+          "prediction_path": "YOLO_Medium_Seg_MOTS20_Benchmark/predictions/benchmark-20261002T075505Z/accuracy/yolov8m-seg/predictions/MOTS20-09_000001.json.gz",
+          "prediction_sha256": "26776c71286a803422c790723e27b64a2b6ad47c9d4f18aac0361b12d163672e",
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "ignored_predictions": 4,
+          "fn_ids": [],
+          "matches": [
+            {
+              "gt_id": 2019,
+              "iou": 0.858468964663655
+            },
+            {
+              "gt_id": 2022,
+              "iou": 0.7371154614462645
+            },
+            {
+              "gt_id": 2023,
+              "iou": 0.8510101836995317
+            },
+            {
+              "gt_id": 2001,
+              "iou": 0.7357195571955719
+            },
+            {
+              "gt_id": 2021,
+              "iou": 0.6983526268922529
+            },
+            {
+              "gt_id": 2020,
+              "iou": 0.7140704464117537
+            }
+          ],
+          "matched_mask_iou": "0.7657895400515048"
+        }
+      ],
+      "comparison_sha256": "78bf4e5d170c86496ba9bc5a03801428ff12fc3d75b1c11dc97ae0127983595b"
+    }
+  ]
+}

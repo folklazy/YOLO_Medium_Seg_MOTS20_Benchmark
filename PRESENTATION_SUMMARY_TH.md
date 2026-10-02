@@ -1,92 +1,185 @@
-# Medium (M)
+# Medium (M) — Visual and Qualitative Analysis
 
-## สรุปแบบกระชับ
+## 1. ภาพรวมผลการทดลอง
 
-- ทดสอบ YOLO26m-Seg, YOLO11m-Seg และ YOLOv8m-Seg สำหรับ Person instance segmentation
-- MOTS20 2,862 frames และ 26,894 Person GT instances ใช้ pretrained / no fine-tuning ภายใต้ controlled benchmark เดียวกัน
-- Accuracy สูงสุด: YOLO26m-Seg; AP75 สูงสุด: YOLO26m-Seg; Recall สูงสุด: YOLO26m-Seg
-- Inference เร็วสุด: YOLOv8m-Seg; pipeline เร็วสุดและ FPS สูงสุด: YOLO11m-Seg
-- Peak allocated VRAM ต่ำสุด: YOLO11m-Seg
-- คู่ที่ใกล้ที่สุดด้าน Mask mAP50-95: YOLO11m-Seg / YOLOv8m-Seg ต่าง 0.011336; ไม่ได้ทดสอบ statistical significance
-- สถานะ PASS WITH WARNINGS; pipeline FPS ไม่รวม RLE preparation และ disk I/O
+Tier นี้เสร็จครบ 3 โมเดลบน MOTS20 ด้วย pretrained / no fine-tuning; คงสถานะ PASS WITH WARNINGS
+เอกสารนี้อ่านพฤติกรรมจาก prediction จริง ส่วนผลเชิงตัวเลขและ trade-off เต็มอยู่ที่ [RESULTS_SUMMARY_TH.md](RESULTS_SUMMARY_TH.md)
 
-## โมเดลที่ทดสอบ
+| Model | Mask mAP50-95 | AP75 | Recall |
+|---|---|---|---|
+| YOLO26m-Seg | 0.574222 | 0.629038 | 0.815312 |
+| YOLO11m-Seg | 0.518307 | 0.557205 | 0.805049 |
+| YOLOv8m-Seg | 0.506971 | 0.542131 | 0.793857 |
 
-1. YOLO26: `yolo26m-seg.pt`
-2. YOLO11: `yolo11m-seg.pt`
-3. YOLOv8: `yolov8m-seg.pt`
+## การเลือกกรณีและการอ่านภาพ
 
-## 1. ผลลัพธ์หลัก
+คัด 4 กรณีจาก 12 เฟรมใน frozen visualization manifest โดยอ่าน per-frame TP/FP/FN และตรวจภาพจริง
+เลือกทั้งข้อได้เปรียบ ข้อผิดพลาดร่วม กรณีสวนอันดับ และผลคล้ายกัน ไม่ใช่การสุ่มตัวแทน dataset
+[CASE_SELECTION.md](outputs/visualizations/qualitative/CASE_SELECTION.md) บันทึกเหตุผลและแหล่งหลักฐาน
+ภาพเดิมมี contact sheet แยกโมเดล จึงสร้าง comparison จาก lossless saved RLE และ original/GT โดยไม่ inference
+แถวแรกเป็น Original/GT; แถวถัดมาเรียง YOLO26, YOLO11, YOLOv8;
+ซ้ายเป็น prediction ขวาเป็น unmatched overlay ทั้งหมดใช้ภาพเต็มเฟรมเดียวกันและ scale เท่ากัน
+สีของ matched mask ผูกกับ GT ID เดียวกัน; สีส้ม FN, สีแดง FP, สีเทา IGN (ignored prediction)
+ใช้ confidence ≥0.25, mask matching IoU ≥0.50 และ ignore policy เดิม
+FN หมายถึง GT ที่ไม่มีคู่ผ่านเกณฑ์ อาจมาจาก mask ไม่ผ่าน IoU ไม่ใช่ไม่มี detection เสมอ;
+FP หมายถึง prediction ที่ไม่ match valid GT และไม่ถูก ignore จึงไม่จำเป็นต้องเป็นคนที่ไม่มีอยู่จริง
+GT panel แสดงเฉพาะ Person; IGN ไม่ถูกนับเป็น FP ตัวเลขรายเฟรมตรวจตรงกับ CSV เดิม
 
-YOLO26m-Seg มี Mask mAP50-95 สูงสุด 0.574222 ส่วน YOLOv8m-Seg มี inference mean ต่ำสุด และ YOLO11m-Seg มี pipeline mean ต่ำสุด/ FPS สูงสุด
+## Case 1 — ความต่างที่ Person ขนาดเล็กกลางภาพ
 
-YOLO11m-Seg ใช้ peak allocated VRAM ต่ำสุด การเลือกต้องแยกเป้าหมาย accuracy, เวลา forward, pipeline และ memory ไม่ตีความความต่างเล็กมากเป็นความเหนือกว่าทางสถิติ
+เหตุผลที่เลือก: ตรวจการเก็บ instance เพิ่มของ accuracy leader พร้อมเห็นข้อผิดพลาดที่ยังมีร่วมกัน · MOTS20-05 / 000419
 
-## 2. ผลรวมโมเดล
+### ภาพเปรียบเทียบ
 
-| Model | Mask mAP50-95 | AP50 | AP75 | Precision | Recall | F1 | TP-only IoU | TP-only Dice | Inference ms | Pipeline ms | FPS | Peak VRAM allocated (MiB) | Parameters |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| YOLO26m-Seg | 0.574222 | 0.873522 | 0.629038 | 0.918331 | 0.815312 | 0.863761 | 0.825309 | 0.900655 | 32.043 | 77.309 | 12.935 | 912.16 | 27,112,072 |
-| YOLO11m-Seg | 0.518307 | 0.855237 | 0.557205 | 0.914354 | 0.805049 | 0.856228 | 0.799402 | 0.884647 | 30.574 | 76.971 | 12.992 | 889.38 | 22,420,896 |
-| YOLOv8m-Seg | 0.506971 | 0.843732 | 0.542131 | 0.895403 | 0.793857 | 0.841578 | 0.797128 | 0.883076 | 27.232 | 78.112 | 12.802 | 1018.76 | 27,285,968 |
+![Case 1 MOTS20-05 frame 419](outputs/visualizations/qualitative/case_01_comparison.png)
 
+### สิ่งที่เห็นจากภาพ
 
-## 3. สรุปผลจากตาราง
+- YOLO26m เก็บ GT 2002 ขนาดเล็กกลางภาพได้ แต่ YOLO11m และ YOLOv8m มี FN 2002
+- ทุกโมเดลมี FN 2054 ช่วงขาริมขวา; YOLO11m มี FP แดงตรงแขน/ถุงของคนใหญ่ริมขวา ขณะที่อีกสองโมเดลไม่มี FP ในเฟรมนี้
 
-### YOLO26m-Seg
+### วิเคราะห์
 
-จุดเด่น: Highest Mask mAP50-95 / Highest AP75 / Highest Recall จุดที่ด้อยกว่า: forward ช้ากว่าตัวที่เร็วที่สุด; ใช้ peak allocated VRAM มากกว่าตัวที่ต่ำสุด อันดับเชิงตัวเลขในสามโมเดลคือ accuracy 1, inference speed 3, pipeline speed 2 และ VRAM ต่ำ 2 เหมาะเริ่มพิจารณาเมื่อเน้น accuracy แล้วตรวจว่าค่า latency และ memory อยู่ในข้อจำกัดของงาน
+ความต่างอยู่ที่การแยก instance ขนาดเล็กกลางภาพ ขณะที่คนใหญ่และคู่กลางภาพดูคล้ายกัน การเก็บเพิ่มหนึ่งคนอาจช่วย Recall แต่ FP ริมขวาของ YOLO11 แสดงว่าจำนวน mask มากขึ้นไม่ได้หมายถึงผลดีขึ้นเสมอ FN 2054 มีพื้นที่ GT ที่มองเห็นน้อยตรงขาของคนริมขวา ตัวอย่างนี้ชี้ให้ดูบริเวณเฉพาะ instance แทนตัดสินจากคนใหญ่เพียงอย่างเดียว โดยไม่จัดระดับความรุนแรงของ occlusion
 
-### YOLO11m-Seg
+### เชื่อมกับผลเชิงตัวเลข
 
-จุดเด่น: Fastest pipeline / Highest FPS / Lowest VRAM จุดที่ด้อยกว่า: Mask mAP50-95 ต่ำกว่าตัวนำ; forward ช้ากว่าตัวที่เร็วที่สุด อันดับเชิงตัวเลขในสามโมเดลคือ accuracy 2, inference speed 2, pipeline speed 1 และ VRAM ต่ำ 1 เหมาะพิจารณาเมื่อจำกัด memory โดยดู accuracy และ latency ประกอบ
+การเก็บ GT 2002 ของ YOLO26m สอดคล้องในทิศทางกับ Recall รวม 0.815312 ที่สูงกว่า YOLOv8m (0.793857) แต่เฟรมเดียวไม่อธิบายช่องว่าง Recall ทั้ง dataset
 
-### YOLOv8m-Seg
+## Case 2 — พลาดร่วมกันในกลุ่มคนซ้อนกัน
 
-จุดเด่น: Fastest inference จุดที่ด้อยกว่า: Mask mAP50-95 ต่ำกว่าตัวนำ; ใช้ peak allocated VRAM มากกว่าตัวที่ต่ำสุด อันดับเชิงตัวเลขในสามโมเดลคือ accuracy 3, inference speed 1, pipeline speed 3 และ VRAM ต่ำ 3 เหมาะพิจารณาเมื่อเวลา forward เป็นข้อจำกัด โดยยอมรับ accuracy ที่ลดลงจากตัวนำ
+เหตุผลที่เลือก: แสดงข้อจำกัดร่วมและ FP ของทุกโมเดล แทนเลือกแต่ภาพที่ตัวนำได้เปรียบ · MOTS20-09 / 000263
 
-## 4. Insight ที่สำคัญ
+### ภาพเปรียบเทียบ
 
-- Observation: YOLO26m-Seg มี Mask mAP50-95 สูงสุด 0.574222; ห่างอันดับถัดไป 0.055915 บนสเกล 0–1
-- Observation: YOLO26m-Seg นำ AP75 และ YOLO26m-Seg นำ Recall
-- Observation: forward เร็วสุดคือ YOLOv8m-Seg, pipeline เร็วสุดและ FPS สูงสุดคือ YOLO11m-Seg, VRAM ต่ำสุดคือ YOLO11m-Seg
-- คู่ที่ใกล้ที่สุดด้าน Mask mAP50-95: YOLO11m-Seg / YOLOv8m-Seg ต่าง 0.011336; ไม่ได้ทดสอบ statistical significance
-- Interpretation: การเลือกต้องแยก accuracy, forward, pipeline และ memory ไม่สรุปว่า parameters ต่ำกว่าจะเร็วหรือใช้ VRAM ต่ำกว่าเสมอ
+![Case 2 MOTS20-09 frame 263](outputs/visualizations/qualitative/case_02_comparison.png)
 
-## 5. Trade-off
+### สิ่งที่เห็นจากภาพ
 
-### Accuracy
+- ทุกโมเดลมี FN ของ GT 2001/2002/2011 ในกลุ่มคนกลางภาพ และ 2023 ริมขวา; GT บางส่วนอยู่หลังคนอื่นและมองเห็นเป็นพื้นที่เล็ก
+- ทุกโมเดลมี FP แดงบริเวณคนกลางภาพ ถึงแม้หลายคนด้านหน้าจะมี matched mask แล้ว
+- YOLO26m และ YOLO11m เก็บได้ 9 instances; YOLOv8m เก็บได้ 8 instances แต่ทั้งหมดก็ยังมี FN หลายตำแหน่ง
 
-YOLO26m-Seg มี Mask mAP50-95 สูงสุด ต้องดู Recall และ AP75 ประกอบตามข้อจำกัด
+### วิเคราะห์
 
-### Speed
+ส่วนที่พลาดไม่ได้มีเฉพาะคนไกล แต่รวมพื้นที่ GT เล็กในกลุ่มคนที่ซ้อนกันด้วย FP บาง mask อยู่บนคนจริงที่ไม่ match ตามเกณฑ์ จึงควรอ่านว่า segmentation/matching error ก่อนเรียกว่า hallucinated person จำนวนคนที่เก็บได้เพิ่มยังเกิดพร้อม FP ได้ ภาพนี้ไม่พิสูจน์สาเหตุของ error หรือความทนทานต่อ occlusion ของทั้ง dataset
 
-YOLOv8m-Seg มี inference mean ต่ำสุด ส่วน YOLO11m-Seg มี pipeline mean ต่ำสุด; คู่ที่ใกล้ที่สุดด้าน inference mean: YOLO26m-Seg / YOLO11m-Seg ต่าง 1.469 ms; ไม่ได้ทดสอบ statistical significance
+### เชื่อมกับผลเชิงตัวเลข
 
-### Memory / Resource
+แม้ YOLO26m มี mAP/AP75 รวมสูงสุด ก็ยังเกิด FN และ FP ในกรณีนี้; ภาพช่วยเห็นข้อจำกัดที่คะแนนเฉลี่ยไม่แสดง การสรุปจำนวน FN/FP ทั้ง dataset ต้องอ่าน canonical CSV ไม่คูณจากกรณีนี้
 
-YOLO11m-Seg ใช้ peak allocated VRAM ต่ำสุด จำนวน parameters และ GFLOPs ไม่ใช่ข้อพิสูจน์เหตุเชิงสาเหตุของ latency
+## Case 3 — กรณีสวนอันดับและ trade-off ของ detection
 
-### ภาพรวม
+เหตุผลที่เลือก: รวมตัวอย่างที่ accuracy leader ไม่ได้เก็บ Person มากที่สุด · MOTS20-02 / 000001
 
-เลือกตามข้อจำกัดจริงโดยแยก accuracy, forward, pipeline และ memory ไม่สร้าง weighted score และไม่สรุปความพร้อมใช้งาน CCTV จากชุดนี้เพียงชุดเดียว
+### ภาพเปรียบเทียบ
 
-## 6. ถ้าต้องเลือกจาก Tier นี้
+![Case 3 detection trade-off](outputs/visualizations/qualitative/case_03_comparison.png)
 
-| Priority | Recommended model | Reason |
+### สิ่งที่เห็นจากภาพ
+
+- YOLOv8m match ได้ 9 instances เทียบกับ YOLO26m 8 และ YOLO11m 7; YOLOv8m เก็บ GT 2020 ในกลุ่มคนซ้ายได้ ขณะที่อีกสองโมเดลมี FN ตรงนี้
+- YOLO26m มี FP 2 masks กลางฉากและใต้วัตถุร่มริมขวา; YOLOv8m มี FP 1 กลางฉาก ส่วน YOLO11m ไม่มี FP แต่พลาดคนมากกว่า
+
+### วิเคราะห์
+
+YOLOv8m เก็บคนได้มากกว่าในเฟรมนี้แม้ Recall รวมต่ำกว่า; YOLO11m ดูระมัดระวังในเฟรมนี้เพราะไม่มี FP แต่ FN มากกว่า เป็น trade-off เฉพาะตัวอย่าง ไม่ใช่คุณสมบัติถาวรของโมเดล ไม่มีการเปลี่ยน confidence ให้โมเดลใดเป็นพิเศษ และบริเวณ FP ริมขวายังคงแสดงเต็มภาพ ไม่ crop เพื่อซ่อน error
+
+### เชื่อมกับผลเชิงตัวเลข
+
+YOLO26m มี Recall รวมสูงสุด 0.815312 แต่ไม่ได้มี TP สูงสุดทุกเฟรม; AP75 เป็นการประเมิน mask หลาย confidence จึงไม่แทนด้วย TP ที่ IoU 0.50 ของเฟรมนี้ ความต่างของ matched-mask IoU ใช้เฉพาะคู่ที่ผ่าน matching และไม่รวมคนที่พลาด
+
+## Case 4 — เก็บคนเหมือนกัน แม้คะแนนรวมต่างกัน
+
+เหตุผลที่เลือก: ตรวจผลที่คล้ายกันและคู่ near tie โดยไม่มี FN/FP ของ valid GT ในเฟรมนี้ · MOTS20-09 / 000001
+
+### ภาพเปรียบเทียบ
+
+![Case 4 similar outputs](outputs/visualizations/qualitative/case_04_comparison.png)
+
+### สิ่งที่เห็นจากภาพ
+
+- ทุกโมเดล match valid GT ครบ 6 instances และไม่มี FP/FN; คนใหญ่ริมขอบภาพ คนหน้าร้าน และ Person ตัวเล็กตรงกลางมี mask ในทุกโมเดล
+- รูปร่าง mask หลักดูคล้ายกันเมื่อดูเต็มเฟรม แต่ขอบ/พื้นที่ mask ไม่ตรงกันทุกพิกเซล และตำแหน่ง IGN อาจต่างกัน
+
+### วิเคราะห์
+
+ภาพเต็มเฟรมที่ดูใกล้กันไม่ได้หมายถึง segmentation เท่ากันทุกขอบ โดยเฉพาะ instance เล็กที่รายละเอียดลดลงเมื่อย่อภาพ ไม่มีฐานให้เรียกความต่างของขอบเพียงเล็กน้อยว่า superiority ที่มีนัยสำคัญ กรณีนี้ยังช่วยกันไม่ให้สรุปจากกรณีล้มเหลวเพียงอย่างเดียว
+
+### เชื่อมกับผลเชิงตัวเลข
+
+Mean matched-mask IoU ของเฟรมนี้: YOLO26m-Seg 0.806307; YOLO11m-Seg 0.750397; YOLOv8m-Seg 0.765790
+แม้ TP เท่ากันแต่ mask overlap ไม่เท่ากัน ซึ่งสอดคล้องกับการที่ mAP/AP75 ประเมินมากกว่าจำนวน detection; ไม่ใช่การคำนวณ AP ใหม่จากเฟรมนี้
+
+## Failure Analysis
+
+| Failure pattern | Models observed | Visual case | Interpretation |
+|---|---|---|---|
+| Missed / unmatched Person พื้นที่เล็ก | ทุกโมเดล (GT 2054); YOLO11 และ YOLOv8 (GT 2002) | Case 1 | บริเวณเล็กยังไม่ผ่าน matching; ไม่สรุปว่าไม่มี detection ทุกครั้ง |
+| Unmatched GT ในกลุ่มคนซ้อนกัน | ทุกโมเดล | Case 2 | FN ร่วมของ 2001/2002/2011; ยังระบุสาเหตุแน่ชัดไม่ได้ |
+| False-positive / unmatched mask บนคนจริง | ทุกโมเดล | Case 2 | Mask แดงไม่ match valid GT; ไม่ใช่ nonexistent person โดยอัตโนมัติ |
+| Extra mask บริเวณวัตถุใต้ร่มริมขวา | YOLO26m | Case 3 | FP ตาม benchmark; เก็บบริเวณเต็มเฟรมไว้ให้ตรวจสอบ |
+
+เป็นประเภท error ที่พบในกรณีที่เลือก ไม่ใช่อัตราหรือความถี่ของทั้ง dataset ไม่ระบุ merging/fragmentation/boundary leakage หากยังไม่มีหลักฐานพอ
+
+## Near-tie visual check
+
+ไม่มี accuracy near tie ที่ชิดระดับ Largest ใน tier นี้ แต่ pipeline YOLO11m/YOLO26m ใกล้กัน (76.971 vs 77.309 ms) Case 4 มีผลเก็บคนคล้ายกัน ส่วน Case 1 ต่างที่ GT 2002 และ FP; ความคล้ายของภาพไม่ใช่หลักฐานยืนยัน latency near tie หรือ accuracy เท่ากัน
+
+## สิ่งที่เรียนรู้จากภาพจริง
+
+### Observation 1
+
+Case 1 คนใหญ่ถูกเก็บในทุกโมเดล แต่ GT 2002 เป็นจุดที่ผลต่างกัน
+
+**Interpretation:** การดูเฉพาะ Person ใหญ่ด้านหน้าอาจซ่อน instance-level error; ต้องตรวจ GT ของคนเล็กด้วย ไม่ใช่ข้อสรุป robustness ทุก scale
+
+### Observation 2
+
+Case 2 ทุกโมเดลพลาด GT ในกลุ่มคนกลางภาพ และมี unmatched prediction บนคนจริง
+
+**Interpretation:** การแบ่ง instance และการผ่าน mask IoU เป็นคนละเรื่องกับแค่เห็นว่ามีคน; FP/FN จึงควรอ่านคู่กับ GT และ ignore policy
+
+### Observation 3
+
+Case 3 มีโมเดลอื่นเก็บ valid Person มากกว่า accuracy leader
+
+**Interpretation:** อันดับรวมไม่ใช่คำรับรองทุกเฟรม; คะแนนหรือ counts ที่ใกล้กันอาจเกิดจาก error ต่างตำแหน่ง
+
+### Observation 4
+
+Case 4 ทุกโมเดลเก็บ valid GT ครบ แต่ matched-mask IoU ไม่เท่ากัน
+
+**Interpretation:** ความคล้ายที่ระดับภาพเต็มเฟรมกับความเท่ากันของ mask เป็นคนละระดับของหลักฐาน ไม่ควรตัดสิน AP75 จากภาพย่ออย่างเดียว
+
+## เมื่อดูทั้งตัวเลขและภาพร่วมกัน
+
+mAP และ AP75 ของ YOLO26m สูงสุดสอดคล้องกับ overlap เฉลี่ยรายเฟรมใน Case 4 และการเก็บ instance เล็กใน Case 1 แต่ Case 3 สวนอันดับ Recall รวม จึงไม่ควรใช้ภาพใดภาพหนึ่งอธิบายคะแนนทั้ง dataset AP75 ยังรวม confidence ranking และ stricter IoU ซึ่งภาพที่ threshold 0.25 แสดงไม่ครบ
+Recall ช่วยบอกความครอบคลุมระดับ dataset; ภาพ FN ช่วยระบุว่าพลาดส่วนไหนในตัวอย่าง
+Latency และ VRAM เป็น system-level measurements ต้องอ่าน benchmark แยกจากภาพ segmentation;
+ไม่สามารถอนุมานว่าหน้ากากสวยกว่าจึงเร็วกว่า ใช้ memory น้อยกว่า หรือเป็นสาเหตุของ resource trade-off
+
+## ถ้าพิจารณาทั้งผลเชิงตัวเลขและภาพ
+
+| Priority | Candidate | Evidence |
 |---|---|---|
-| Accuracy | YOLO26m-Seg | Mask mAP50-95 สูงสุด |
-| Speed | YOLOv8m-Seg (inference); YOLO11m-Seg (pipeline) | เลือกตามส่วนที่เป็นข้อจำกัด |
-| Low VRAM | YOLO11m-Seg | peak allocated VRAM ต่ำสุด |
-| Balanced trade-off | YOLO26m-Seg เป็นตัวเริ่มพิจารณาแบบเน้น accuracy | ใช้เมื่อยอมรับ latency และ VRAM ในตารางได้; ไม่มีผู้ชนะสมดุลแบบไม่ขึ้นกับข้อจำกัด และไม่มีคะแนนรวม |
+| Accuracy | YOLO26m-Seg | mAP/AP75/Recall รวมสูงสุด; Case 1/4 ช่วยตีความ แต่ Case 2/3 แสดงข้อจำกัด |
+| Speed | YOLOv8m-Seg (inference); YOLO11m-Seg (pipeline) | Clean timing benchmark; ภาพไม่วัดเวลา |
+| Low VRAM | YOLO11m-Seg | Peak allocated VRAM benchmark; ภาพไม่วัด memory |
+| Balanced | YOLO26m-Seg หากยอมรับ VRAM/latency เพิ่มจาก YOLO11m | mAP เพิ่ม 0.055915 จาก YOLO11m แลก inference +1.469 ms, pipeline +0.338 ms, VRAM +22.78 MiB; Case 1 แสดง instance เพิ่ม แต่ Case 3 มี FP |
 
+เป็น candidate สำหรับ cross-tier และ CCTV robustness evaluation ภายหลัง ไม่มี weighted score หรือข้อยืนยัน final CCTV superiority
 
-## 7. ข้อควรระวังในการตีความ
+## ข้อจำกัด
 
-ผลนี้เป็น Person instance segmentation รายเฟรมบน MOTS20 ไม่ใช่ MOTS tracking; 26,894 GT instances เป็น annotation รายเฟรม ไม่ใช่จำนวนคนไม่ซ้ำ TP-only IoU/Dice พิจารณาเฉพาะคู่ที่ match ได้ ภาพต่อเนื่องสัมพันธ์กันและไม่มีการทดสอบ statistical significance ผลยังไม่ยืนยัน blur, low-light, มุมกล้อง, ระดับ occlusion หรือ deployment suitability จึงใช้เพื่อเลือก candidate for later CCTV robustness evaluation เท่านั้น
-
-คงคำเตือน NNPACK / pycocotools ตามหลักฐาน และแยก pipeline FPS ออกจากระบบที่บันทึก masks ครบวงจร
+- เฟรมที่เลือกเป็นตัวอย่างเชิงคุณภาพจาก 12 เฟรมเดิม ไม่แทน dataset-level metrics และไม่ใช่ representative sample
+- มีทั้งข้อได้เปรียบ ข้อผิดพลาด กรณีสวนอันดับ และผลคล้ายกันเพื่อลด cherry-picking; ยังอาจพลาด error ชนิดอื่นนอก selection pool
+- MOTS20 ไม่ใช่ผลทดสอบ CCTV robustness ขั้นสุดท้าย; ไม่อนุมาน blur/low-light/มุมกล้องหรือระดับ occlusion
+- Qualitative observations และ numerical near ties ไม่ใช่ statistical significance
+- ภาพย่อ/overlay อาจบังรายละเอียดขอบ; ตรวจ saved RLE หากต้องการตรวจพิกเซล ไม่อธิบายสาเหตุจาก architecture
 
 ## รายละเอียดเต็ม
 
-[REPORT.md](REPORT.md) · [metrics/TIER_RESULTS.csv](metrics/TIER_RESULTS.csv) · [RESULTS_SUMMARY_TH.md](RESULTS_SUMMARY_TH.md) · [Master Study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study)
+[Quantitative summary](RESULTS_SUMMARY_TH.md) · [REPORT.md](REPORT.md) · [TIER_RESULTS.csv](metrics/TIER_RESULTS.csv) ·
+[Case evidence](outputs/visualizations/qualitative/CASE_EVIDENCE.json) ·
+[Master Study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study)
