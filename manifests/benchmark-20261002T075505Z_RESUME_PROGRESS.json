@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-10-02T09:05:05.833143+00:00",
+  "stage": "COMPLETE_VALIDATED",
+  "supervisor_pid": 392386,
+  "models": [
+    {
+      "model": "yolo26m-seg.pt",
+      "frames_saved": 2862,
+      "last_frame": "MOTS20-11_000900"
+    },
+    {
+      "model": "yolo11m-seg.pt",
+      "frames_saved": 2862,
+      "last_frame": "MOTS20-11_000900"
+    },
+    {
+      "model": "yolov8m-seg.pt",
+      "frames_saved": 2862,
+      "last_frame": "MOTS20-11_000900"
+    }
+  ]
+}

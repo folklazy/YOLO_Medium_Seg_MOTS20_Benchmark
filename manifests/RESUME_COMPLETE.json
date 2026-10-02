@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-10-02T09:05:05.841365+00:00",
+  "status": "PASS_WITH_WARNINGS",
+  "run_id": "benchmark-20261002T075505Z",
+  "models": [
+    "yolo26m-seg.pt",
+    "yolo11m-seg.pt",
+    "yolov8m-seg.pt"
+  ],
+  "canonical_validation": "PASS",
+  "document_validation": "PASS",
+  "saved_frames_preserved": "PASS",
+  "git_publication": "validated artifacts selected for independent Medium commit"
+}

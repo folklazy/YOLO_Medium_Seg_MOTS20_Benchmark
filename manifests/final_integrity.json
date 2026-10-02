@@ -1,0 +1,85 @@
+{
+  "timestamp": "2026-10-02T09:05:03.304275+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "item": "Exactly 3 expected models",
+      "status": "PASS"
+    },
+    {
+      "item": "2862 frames and 26894 GT per model",
+      "status": "PASS"
+    },
+    {
+      "item": "Dataset hashes, dimensions and ordering",
+      "status": "PASS"
+    },
+    {
+      "item": "Frozen evaluator and preprocessing",
+      "status": "PASS"
+    },
+    {
+      "item": "Config and protocol freeze",
+      "status": "PASS"
+    },
+    {
+      "item": "Framework and environment",
+      "status": "PASS"
+    },
+    {
+      "item": "AP maxDet 200 preflight",
+      "status": "PASS"
+    },
+    {
+      "item": "Finite native Person predictions",
+      "status": "PASS"
+    },
+    {
+      "item": "No model cap saturation",
+      "status": "PASS"
+    },
+    {
+      "item": "Accuracy arithmetic and sequence completeness",
+      "status": "PASS"
+    },
+    {
+      "item": "Three clean timing rounds per model",
+      "status": "PASS"
+    },
+    {
+      "item": "Exact timing frame order",
+      "status": "PASS"
+    },
+    {
+      "item": "Timing pooled statistics and VRAM",
+      "status": "PASS"
+    },
+    {
+      "item": "Checkpoint hashes",
+      "status": "PASS"
+    },
+    {
+      "item": "Frozen input archive",
+      "status": "PASS"
+    }
+  ],
+  "frames_per_model": 2862,
+  "gt_instances": 26894,
+  "models": [
+    "yolo26m-seg.pt",
+    "yolo11m-seg.pt",
+    "yolov8m-seg.pt"
+  ],
+  "timing_clean_rounds": 9,
+  "inference_rerun": false,
+  "frozen_runtime_sources_unchanged": true,
+  "archive_unchanged": true,
+  "dataset_and_checkpoint_hashes_unchanged": true,
+  "environment_packages_unchanged": true,
+  "post_freeze_reporting_sources": {
+    "src/build_medium_results.py": "dbcf97e43aa447e7bd9ca0c697ebeeb0d3bb1b7cab62ecce37fb106d628041a9",
+    "src/report_medium.py": "a051363060f4c57d9edc866157dc43b657c71a12d133b685ad0356b677b43f49",
+    "src/resume_medium.py": "d3b156d0c3e987f4f3f9583fceecd179f405fd02997bbfe5dceff402475b21d6",
+    "src/audit_resume_state.py": "58d627eb41b4879119593256c19a5ff7713e7e13bf9a90da59e1827f7dc4a33b"
+  }
+}

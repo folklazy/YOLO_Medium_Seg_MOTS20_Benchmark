@@ -2,7 +2,7 @@
 
 ## Overview
 
-Setup for pretrained Person instance segmentation on MOTS20 under the common controlled protocol. No training or fine-tuning. Stage 0 prepared interfaces only; this tier has not run.
+Pretrained YOLO Person instance segmentation on MOTS20 using the frozen study protocol. Three Medium checkpoints were evaluated without training, fine-tuning or adaptation. This is frame-level segmentation, not MOTS tracking.
 
 ## Models
 
@@ -12,20 +12,26 @@ Setup for pretrained Person instance segmentation on MOTS20 under the common con
 | YOLO11 | YOLO11m-Seg | Medium (M) |
 | YOLOv8 | YOLOv8m-Seg | Medium (M) |
 
+
 ## Experimental Status
 
-READY / NOT_RUN — readiness is setup readiness, not execution authorization.
+PASS WITH WARNINGS — COMPLETE, run `benchmark-20261002T075505Z`. All three models completed 2,862 frames and three clean timing rounds each.
 
 ## Main Result
 
-Not run. CSVs contain headers only.
+| Model | Mask mAP50-95 | Recall | F1 | Inference ms | Pipeline ms | FPS | Peak VRAM MiB |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| YOLO26m-Seg | 0.574222 | 0.815312 | 0.863761 | 32.043 | 77.309 | 12.935 | 912.16 |
+| YOLO11m-Seg | 0.518307 | 0.805049 | 0.856228 | 30.574 | 76.971 | 12.992 | 889.38 |
+| YOLOv8m-Seg | 0.506971 | 0.793857 | 0.841578 | 27.232 | 78.112 | 12.802 | 1018.76 |
+
 
 ## Reports
 
-- [PRESENTATION_SUMMARY_TH.md](PRESENTATION_SUMMARY_TH.md) — pending benchmark
-- [RESULTS_SUMMARY_TH.md](RESULTS_SUMMARY_TH.md) — pending benchmark
-- [REPORT.md](REPORT.md) — pending benchmark
-- [EXPERIMENT_PROTOCOL.md](EXPERIMENT_PROTOCOL.md) — setup protocol
+- [PRESENTATION_SUMMARY_TH.md](PRESENTATION_SUMMARY_TH.md)
+- [RESULTS_SUMMARY_TH.md](RESULTS_SUMMARY_TH.md)
+- [REPORT.md](REPORT.md)
+- [EXPERIMENT_PROTOCOL.md](EXPERIMENT_PROTOCOL.md)
 
 ## Study Navigation
 

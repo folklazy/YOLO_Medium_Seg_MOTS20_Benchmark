@@ -1,1 +1,4 @@
 study_id,schema_version,experiment,tier,family,model,loaded_parameters,fused_parameters,gflops,checkpoint_mb,model_load_seconds
+yolo_instance_segmentation_mots20_scaling,1.0,YOLO_Medium_Seg_MOTS20_Benchmark,medium,YOLO26,YOLO26m-Seg,27112072,23569148,132.7808512,54.750385,0.7580660926566148
+yolo_instance_segmentation_mots20_scaling,1.0,YOLO_Medium_Seg_MOTS20_Benchmark,medium,YOLO11,YOLO11m-Seg,22420896,22396992,113.9681792,45.400152,0.495514157655028
+yolo_instance_segmentation_mots20_scaling,1.0,YOLO_Medium_Seg_MOTS20_Benchmark,medium,YOLOv8,YOLOv8m-Seg,27285968,27268704,104.9772544,54.92102,0.48621684999670833

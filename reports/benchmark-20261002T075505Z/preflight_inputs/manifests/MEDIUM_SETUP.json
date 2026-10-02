@@ -1,0 +1,78 @@
+{
+  "run_id": "benchmark-20261002T075505Z",
+  "timestamp": "2026-10-02T07:55:05.146276+00:00",
+  "source_adaptations": {
+    "validate.py": {
+      "reference": "YOLO_Second_Largest_Seg_MOTS20_Benchmark/src/validate.py",
+      "reference_sha256": "1e33433f12feb05787e3cda1f76683a631ff7d055646f71335ced108b42b4654",
+      "adapted_sha256": "a675fc32e2591c2eefe5b329897a74b80325ab3b8f5dad127c42ef5a1a01d7b3",
+      "diff": "--- reference\n+++ medium\n@@ -7,7 +7,7 @@\n os.environ['YOLO_AUTOINSTALL'] = 'false'\n sys.dont_write_bytecode = True\n SEQS = ['MOTS20-02','MOTS20-05','MOTS20-09','MOTS20-11']\n-MODELS = ['yolo26l-seg.pt','yolo11l-seg.pt','yolov8l-seg.pt','yolov9c-seg.pt']\n+MODELS = ['yolo26m-seg.pt','yolo11m-seg.pt','yolov8m-seg.pt']\n def sha(p):\n     h=hashlib.sha256()\n     with open(p,'rb') as f:\n"
+    },
+    "benchmark.py": {
+      "reference": "YOLO_Second_Largest_Seg_MOTS20_Benchmark/src/benchmark.py",
+      "reference_sha256": "8bdd08207228eb67a6feda6832c375f70845fc8bb0270c2c2d6c73bb05de9ce6",
+      "adapted_sha256": "8fb5628f8662a3c5f70311f5049dba3dc6a8ef8eed27bc95212c1217df014fd8",
+      "diff": "--- reference\n+++ medium\n@@ -151,7 +151,7 @@\n     cfg['ap_max_dets']=selected\n     (EXP/'configs/benchmark.yaml').write_text(yaml.safe_dump(cfg,sort_keys=False))\n     with (EXP/'EXPERIMENT_PROTOCOL.md').open('a') as f:\n-        f.write(f'\\n## Preflight decision — {now()}\\n\\nRun `{run}` passed all four models, 100 frames each. Common AP maxDet = **{selected}**. '\n+        f.write(f'\\n## Preflight decision — {now()}\\n\\nRun `{run}` passed all three models, 100 frames each. Common AP maxDet = **{selected}**. '\n                 f'All three AP absolute differences from 1000 are <0.0001 for every model. '\n                 f'See `metrics/{run}/preflight_maxdet.csv`. This decision precedes full accuracy.\\n')\n     print('PHASE 3 PASS; frozen AP maxDet',selected,flush=True)\n@@ -205,6 +205,11 @@\n     frozen['checkpoint_manifest_sha256']=sha(EXP/'manifests/checkpoint_manifest.json')\n     frozen['dataset_manifest_sha256']=sha(EXP/'manifests/dataset_manifest.json')\n     write(EXP/'manifests'/f'{run}_full_freeze.json',frozen)\n+    archive=EXP/'reports'/run/'frozen_inputs';archive.mkdir(parents=True,exist_ok=False)\n+    inputs=[EXP/'EXPERIMENT_PROTOCOL.md',EXP/'configs/benchmark.yaml',*list((EXP/'src').rglob('*.py')),*list((EXP/'manifests').glob('*.json'))]\n+    for src in inputs:\n+        dst=archive/src.relative_to(EXP);dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dst)\n+    write(EXP/'manifests'/f'{run}_input_archive.json',{'hashes':{str(src.relative_to(EXP)):sha(src) for src in inputs}})\n     all_rows=[]\n     for name in MODELS:\n         log=EXP/'logs'/run/f'accuracy-{name}.log'\n"
+    },
+    "benchmark_adapter.py": {
+      "reference": "YOLO_Second_Largest_Seg_MOTS20_Benchmark/src/benchmark_adapter.py",
+      "reference_sha256": "c13177d47f40dc59f83e5d5227d796e67c09d915c8573f169131cee39974260d",
+      "adapted_sha256": "c13177d47f40dc59f83e5d5227d796e67c09d915c8573f169131cee39974260d",
+      "diff": ""
+    },
+    "repeat_clean_timing.py": {
+      "reference": "YOLO_Second_Largest_Seg_MOTS20_Benchmark/src/repeat_clean_timing.py",
+      "reference_sha256": "1df651127bf9ca3aeb51ba16e76d341c04c03bcf45837e69e6571a0cf781dea2",
+      "adapted_sha256": "cc93c1b27ab22c8bfc3921edc650255d9bece6c4c4734a373fd3b30b4c597653",
+      "diff": "--- reference\n+++ medium\n@@ -37,7 +37,7 @@\n     path=b.EXP/'logs'/run/'timing_repetition_source.py'\n     assert not path.exists();path.write_text(source)\n     b.write(b.EXP/'logs'/run/'timing_repetition_provenance.json',{\n-        'timestamp':b.now(),'reason':'Predeclared use of Experiment 1 idle-gated clean timing procedure for Experiment 2; unchanged measured loop.',\n+        'timestamp':b.now(),'reason':'Predeclared use of Experiment 1 idle-gated clean timing procedure for Medium; unchanged measured loop.',\n         'original_runner_sha256':b.sha(b.EXP/'src/benchmark.py'),\n         'generated_timing_source_sha256':hashlib.sha256(source.encode()).hexdigest(),\n         'changes':substitutions,'measured_loop_unchanged':True,\n"
+    }
+  },
+  "archived_setup_documents": [
+    {
+      "original": "README.md",
+      "archive": "reports/archive/README.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "fc760f86d14d6c28785aac9fe001996304f7b02326866d9dd5d0e09153279244"
+    },
+    {
+      "original": "REPORT.md",
+      "archive": "reports/archive/REPORT.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "11e46ee9e8e25269993ea84dbeb166b2a4975312d5608686c6e165cf1d1b7da4"
+    },
+    {
+      "original": "RESULTS_SUMMARY_TH.md",
+      "archive": "reports/archive/RESULTS_SUMMARY_TH.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "adad7df1d4b0ab67f74eed9d7c83211a46c55515dacf269e3bca0985784628b1"
+    },
+    {
+      "original": "PRESENTATION_SUMMARY_TH.md",
+      "archive": "reports/archive/PRESENTATION_SUMMARY_TH.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "82601a1e7090629835c147b32f5a9742bdfe6fe7aaa739bf60d29d0e74858ea9"
+    },
+    {
+      "original": "EXPERIMENT_PROTOCOL.md",
+      "archive": "reports/archive/EXPERIMENT_PROTOCOL.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "50e12c6c3af1e13e8c0050385bba34e6ec18e4f3e65768fa902cbaa1e52e9d2d"
+    },
+    {
+      "original": "manifests/environment.json",
+      "archive": "reports/archive/manifests__environment.json.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "4be655dd98646382422a1e654b566ee841568ed25e51f849c9869968f4b218c0"
+    },
+    {
+      "original": "manifests/STANDARDIZATION.json",
+      "archive": "reports/archive/manifests__STANDARDIZATION.json.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "4fbf2efa6c2eebb53d7670734eaa9788e389a646aef71fc41b6b64aa93b14c74"
+    },
+    {
+      "original": "configs/benchmark.yaml",
+      "archive": "reports/archive/configs__benchmark.yaml.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "9e269f18574a136d07f908f36fa0fa39649dbc4419a7931b4a5fbd1a882a52e0"
+    }
+  ],
+  "models": [
+    "yolo26m-seg.pt",
+    "yolo11m-seg.pt",
+    "yolov8m-seg.pt"
+  ],
+  "presentation_exception": "Latest Medium request explicitly includes สรุปสำหรับคุยกับพี่; central standard unchanged."
+}

@@ -4,18 +4,110 @@
   "repository": "YOLO_Medium_Seg_MOTS20_Benchmark",
   "experiment": "YOLO_Medium_Seg_MOTS20_Benchmark",
   "tier": "medium",
-  "source_run_ids": [],
-  "source_artifact_paths": [],
-  "source_artifact_sha256": {},
-  "evaluator_hash": null,
+  "source_run_ids": [
+    "benchmark-20261002T075505Z"
+  ],
+  "source_artifact_paths": [
+    "metrics/benchmark-20261002T075505Z/per_model.csv",
+    "metrics/benchmark-20261002T075505Z/per_sequence.csv",
+    "metrics/benchmark-20261002T075505Z/preflight_maxdet.csv",
+    "metrics/benchmark-20261002T075505Z/protocol_consistency.csv",
+    "timing/benchmark-20261002T075505Z/clean_repetition/summary.csv",
+    "timing/benchmark-20261002T075505Z/clean_repetition/runs.json",
+    "configs/benchmark.yaml",
+    "EXPERIMENT_PROTOCOL.md",
+    "manifests/environment.json",
+    "manifests/checkpoint_manifest.json",
+    "manifests/source_manifest.json",
+    "manifests/dataset_manifest.json",
+    "manifests/benchmark-20261002T075505Z_full_freeze.json",
+    "manifests/benchmark-20261002T075505Z_input_archive.json",
+    "manifests/benchmark-20261002T075505Z_prediction_hashes.json",
+    "predictions/benchmark-20261002T075505Z/accuracy/yolo26m-seg/metadata.json",
+    "predictions/benchmark-20261002T075505Z/accuracy/yolo11m-seg/metadata.json",
+    "predictions/benchmark-20261002T075505Z/accuracy/yolov8m-seg/metadata.json"
+  ],
+  "source_artifact_sha256": {
+    "metrics/benchmark-20261002T075505Z/per_model.csv": "f866c7e97ca9674eca9cd1bc2bf335738f68b7d0fa9c8c0da34325821433ce4f",
+    "metrics/benchmark-20261002T075505Z/per_sequence.csv": "9ac360be264a6e09a2bd231013f4e032a6fa9cf55adde34f42f628dd6a042d4f",
+    "metrics/benchmark-20261002T075505Z/preflight_maxdet.csv": "6ad21cb7385eb2018566d054d347bb6ae3a7984591b1c7771e4bdf029f9365d2",
+    "metrics/benchmark-20261002T075505Z/protocol_consistency.csv": "a1dec6975393feb48c5573dd9d420145c8c6472bf6d0bc41518fc9afab0b92d8",
+    "timing/benchmark-20261002T075505Z/clean_repetition/summary.csv": "8329504596b721ec595706d5fe8d2b4f82166e4d064a34a93cebfd06a5a67648",
+    "timing/benchmark-20261002T075505Z/clean_repetition/runs.json": "51a19fe1241eb97073c850ec4c49c192a07fe61510e675a2a631eff97fc59399",
+    "configs/benchmark.yaml": "9e269f18574a136d07f908f36fa0fa39649dbc4419a7931b4a5fbd1a882a52e0",
+    "EXPERIMENT_PROTOCOL.md": "3d095a8dac90b21e4e5af978e355c2d3f5c45749dfd212446c3ef647be20c5c7",
+    "manifests/environment.json": "4c78b594b219873a017a8128d8955752ba2f03f7d159f9e1a5484589ec30585c",
+    "manifests/checkpoint_manifest.json": "aaa93b7ced08926a0540d1145ff81f84779d77ae64be3249c655bdf21991c046",
+    "manifests/source_manifest.json": "c155871a7ee1cf46305246b2c65913e64b965873c6e59375b9ac6373fafdb654",
+    "manifests/dataset_manifest.json": "a22f982953dac6485df97a00e9f48d24b47144855a8481ca5dd8c05007e6afe3",
+    "manifests/benchmark-20261002T075505Z_full_freeze.json": "17d3048d38ea09859d6ab762d798d2abd11bc58334f5d21c67e39b0319d5ed3b",
+    "manifests/benchmark-20261002T075505Z_input_archive.json": "0e69d99e01a673c6b23107f87828613090dd31e3c1fa438e38352b1767174a8c",
+    "manifests/benchmark-20261002T075505Z_prediction_hashes.json": "accf8ea089678adda8907bcfc56cf92cf07879cdc659794db0e2d61be350c5fd",
+    "predictions/benchmark-20261002T075505Z/accuracy/yolo26m-seg/metadata.json": "385ed02bd3f0f1ee4e3a09fe945b6d88addbf09fee2c972c0a1df67e7563147e",
+    "predictions/benchmark-20261002T075505Z/accuracy/yolo11m-seg/metadata.json": "ebe3b1d0df441d4f2d0192fe6ba4d0d199740092d352848904ec0c297debe606",
+    "predictions/benchmark-20261002T075505Z/accuracy/yolov8m-seg/metadata.json": "63288ba5b30c898c08ebd66567c5780ce6d8f0b2c519ee1948198fbbcc9b80b5"
+  },
+  "evaluator_hash": {
+    "src/frozen_pilot/metrics.py": "3f39f8bed8d62677ea1f6fbdce4415e04ccaede8b0ae0425fd63f78594980721",
+    "src/frozen_pilot/mots.py": "01e4a750d8ed6bd1d0002a7b906f351ff9d7b59d3f6e31db633cd4b463b0f51d"
+  },
   "config_hash": "9e269f18574a136d07f908f36fa0fa39649dbc4419a7931b4a5fbd1a882a52e0",
-  "protocol_hash": "50e12c6c3af1e13e8c0050385bba34e6ec18e4f3e65768fa902cbaa1e52e9d2d",
-  "dataset_manifest_hash": "43cd08407a5511877784dfde3d112f37b7db35a855c2bcd4f6ebccd274f91170",
-  "standardization_timestamp": "2026-10-02T05:22:22.224075+00:00",
+  "protocol_hash": "3d095a8dac90b21e4e5af978e355c2d3f5c45749dfd212446c3ef647be20c5c7",
+  "dataset_manifest_hash": "a22f982953dac6485df97a00e9f48d24b47144855a8481ca5dd8c05007e6afe3",
+  "standardization_timestamp": "2026-10-02T09:05:03.303751+00:00",
   "inference_rerun": false,
   "metrics_recalculated": false,
-  "historical_documents_archived": [],
+  "historical_documents_archived": [
+    {
+      "original": "README.md",
+      "archive": "reports/archive/README.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "fc760f86d14d6c28785aac9fe001996304f7b02326866d9dd5d0e09153279244"
+    },
+    {
+      "original": "REPORT.md",
+      "archive": "reports/archive/REPORT.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "11e46ee9e8e25269993ea84dbeb166b2a4975312d5608686c6e165cf1d1b7da4"
+    },
+    {
+      "original": "RESULTS_SUMMARY_TH.md",
+      "archive": "reports/archive/RESULTS_SUMMARY_TH.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "adad7df1d4b0ab67f74eed9d7c83211a46c55515dacf269e3bca0985784628b1"
+    },
+    {
+      "original": "PRESENTATION_SUMMARY_TH.md",
+      "archive": "reports/archive/PRESENTATION_SUMMARY_TH.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "82601a1e7090629835c147b32f5a9742bdfe6fe7aaa739bf60d29d0e74858ea9"
+    },
+    {
+      "original": "EXPERIMENT_PROTOCOL.md",
+      "archive": "reports/archive/EXPERIMENT_PROTOCOL.md.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "50e12c6c3af1e13e8c0050385bba34e6ec18e4f3e65768fa902cbaa1e52e9d2d"
+    },
+    {
+      "original": "manifests/environment.json",
+      "archive": "reports/archive/manifests__environment.json.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "4be655dd98646382422a1e654b566ee841568ed25e51f849c9869968f4b218c0"
+    },
+    {
+      "original": "manifests/STANDARDIZATION.json",
+      "archive": "reports/archive/manifests__STANDARDIZATION.json.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "4fbf2efa6c2eebb53d7670734eaa9788e389a646aef71fc41b6b64aa93b14c74"
+    },
+    {
+      "original": "configs/benchmark.yaml",
+      "archive": "reports/archive/configs__benchmark.yaml.pre-medium-benchmark-20261002T075505Z",
+      "sha256": "9e269f18574a136d07f908f36fa0fa39649dbc4419a7931b4a5fbd1a882a52e0"
+    }
+  ],
   "notes": [
-    "Setup-only; NOT_RUN. Environment is readiness inspection, not a benchmark run capture. Exact evaluator reuse and per-tier preflight are required after explicit authorization. No checkpoint download or inference performed."
-  ]
+    "New Medium experiment, not a rerun. Accuracy calculated once from saved lossless predictions. Canonical conversion preserves structured numeric strings.",
+    "metrics_recalculated=False refers to normalization; independent arithmetic/statistics verification does not replace measured results.",
+    "Primary timing uses only three clean rounds/model. Reserved VRAM and load/baseline records remain in source timing summary.",
+    "PASS_WITH_WARNINGS retains NNPACK CPU inspection and pycocotools/NumPy deprecation warnings.",
+    "Resume instruction requires neutral presentation summary; no mentor-specific closing content. Frozen measurement protocol is unchanged.",
+    "Session recovery reused completed YOLO26m/YOLO11m results and retained the active original YOLOv8m worker; no restart from zero."
+  ],
+  "resumed_execution": true,
+  "resume_provenance": "manifests/RESUME_PROVENANCE.json",
+  "resume_provenance_sha256": "692f205c46496b2b61fe50a8eb6f619f71e8b04c086309f91b9932800402c318"
 }

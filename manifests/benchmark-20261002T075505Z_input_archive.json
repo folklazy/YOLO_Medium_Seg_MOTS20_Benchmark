@@ -1,0 +1,32 @@
+{
+  "hashes": {
+    "EXPERIMENT_PROTOCOL.md": "3d095a8dac90b21e4e5af978e355c2d3f5c45749dfd212446c3ef647be20c5c7",
+    "configs/benchmark.yaml": "9e269f18574a136d07f908f36fa0fa39649dbc4419a7931b4a5fbd1a882a52e0",
+    "src/benchmark_adapter.py": "c13177d47f40dc59f83e5d5227d796e67c09d915c8573f169131cee39974260d",
+    "src/benchmark.py": "8fb5628f8662a3c5f70311f5049dba3dc6a8ef8eed27bc95212c1217df014fd8",
+    "src/repeat_clean_timing.py": "cc93c1b27ab22c8bfc3921edc650255d9bece6c4c4734a373fd3b30b4c597653",
+    "src/run_medium.py": "2309db164978c92fabb9a55ce81b6b6ef8a349e3e5629fbc421779a62295912e",
+    "src/validate.py": "a675fc32e2591c2eefe5b329897a74b80325ab3b8f5dad127c42ef5a1a01d7b3",
+    "src/frozen_pilot/mots.py": "01e4a750d8ed6bd1d0002a7b906f351ff9d7b59d3f6e31db633cd4b463b0f51d",
+    "src/frozen_pilot/visualize.py": "6188a131ae284dfce825903f3cd3b33e5aa9d6638d51c1d9a32bddf0016cffbf",
+    "src/frozen_pilot/metrics.py": "3f39f8bed8d62677ea1f6fbdce4415e04ccaede8b0ae0425fd63f78594980721",
+    "src/frozen_pilot/test_pipeline.py": "5e785fbf0619c5ad7818145ae29c436aec5bbe572f5121ff860e1838dab9a0a2",
+    "src/frozen_pilot/yolo_adapter.py": "d739c5477490b805773e1320e744052152dd1acc9e03719fed4a588ed7b2a36f",
+    "manifests/MEDIUM_SETUP.json": "03839ffc787aa29d59a9906919b3e5f303e7f859b7fb17a851ee0bc58fc05c87",
+    "manifests/images.json": "3bdd87baddcbae32c7ed9ad7ec01bad613d0e0b837b84c4a3fe45eb1dc3b2d78",
+    "manifests/dataset_manifest.json": "a22f982953dac6485df97a00e9f48d24b47144855a8481ca5dd8c05007e6afe3",
+    "manifests/shared_input_audit.json": "c4ff65ddcafb793ccdf978384c6a97c989f16ad68f4bc3cfe9ed1db4efaca74a",
+    "manifests/source_manifest.json": "c155871a7ee1cf46305246b2c65913e64b965873c6e59375b9ac6373fafdb654",
+    "manifests/environment.json": "4c78b594b219873a017a8128d8955752ba2f03f7d159f9e1a5484589ec30585c",
+    "manifests/environment_comparison.json": "091900026f93a9915e909fed4201b879660f2f8b8b1b3b3d8c1e5fa3a9876b08",
+    "manifests/visualization_frames.json": "b64d28af8312c544f9aff083dccc9fb4a9ca7e28d8a43617388869a38f5b60c6",
+    "manifests/benchmark-20261002T075505Z_preflight.json": "f82880affc019abfa800292582e92e7d62e0833cc9f8fca1ed75157f32ab9cad",
+    "manifests/preflight_frames.json": "5e66c48b3fd844dcd7ce9bb770c6f65df37efb2846b4ae05ace49c752eb6f601",
+    "manifests/STANDARDIZATION.json": "4fbf2efa6c2eebb53d7670734eaa9788e389a646aef71fc41b6b64aa93b14c74",
+    "manifests/benchmark-20261002T075505Z_preflight_output_checks.json": "6d316b287a77c648154dd4cf4614354b179f6d9c3a1ef0f472e52feb9530c191",
+    "manifests/checkpoint_manifest.json": "aaa93b7ced08926a0540d1145ff81f84779d77ae64be3249c655bdf21991c046",
+    "manifests/timing_frames.json": "5e66c48b3fd844dcd7ce9bb770c6f65df37efb2846b4ae05ace49c752eb6f601",
+    "manifests/framework_source_hashes.json": "8fd3e65cd72c981f8c5524efaacec9bff8a334ee02c8d9e691940a729f242670",
+    "manifests/benchmark-20261002T075505Z_full_freeze.json": "17d3048d38ea09859d6ab762d798d2abd11bc58334f5d21c67e39b0319d5ed3b"
+  }
+}

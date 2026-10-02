@@ -1,67 +1,92 @@
 # Medium (M)
 
-<!-- Template only. Populate from canonical CSV after validation; never invent measurements. -->
-
 ## สรุปแบบกระชับ
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+- ทดสอบ YOLO26m-Seg, YOLO11m-Seg และ YOLOv8m-Seg สำหรับ Person instance segmentation
+- MOTS20 2,862 frames และ 26,894 Person GT instances ใช้ pretrained / no fine-tuning ภายใต้ controlled benchmark เดียวกัน
+- Accuracy สูงสุด: YOLO26m-Seg; AP75 สูงสุด: YOLO26m-Seg; Recall สูงสุด: YOLO26m-Seg
+- Inference เร็วสุด: YOLOv8m-Seg; pipeline เร็วสุดและ FPS สูงสุด: YOLO11m-Seg
+- Peak allocated VRAM ต่ำสุด: YOLO11m-Seg
+- คู่ที่ใกล้ที่สุดด้าน Mask mAP50-95: YOLO11m-Seg / YOLOv8m-Seg ต่าง 0.011336; ไม่ได้ทดสอบ statistical significance
+- สถานะ PASS WITH WARNINGS; pipeline FPS ไม่รวม RLE preparation และ disk I/O
 
 ## โมเดลที่ทดสอบ
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+1. YOLO26: `yolo26m-seg.pt`
+2. YOLO11: `yolo11m-seg.pt`
+3. YOLOv8: `yolov8m-seg.pt`
 
 ## 1. ผลลัพธ์หลัก
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+YOLO26m-Seg มี Mask mAP50-95 สูงสุด 0.574222 ส่วน YOLOv8m-Seg มี inference mean ต่ำสุด และ YOLO11m-Seg มี pipeline mean ต่ำสุด/ FPS สูงสุด
+
+YOLO11m-Seg ใช้ peak allocated VRAM ต่ำสุด การเลือกต้องแยกเป้าหมาย accuracy, เวลา forward, pipeline และ memory ไม่ตีความความต่างเล็กมากเป็นความเหนือกว่าทางสถิติ
 
 ## 2. ผลรวมโมเดล
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
-
 | Model | Mask mAP50-95 | AP50 | AP75 | Precision | Recall | F1 | TP-only IoU | TP-only Dice | Inference ms | Pipeline ms | FPS | Peak VRAM allocated (MiB) | Parameters |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-<!-- Add measured rows only, in fixed model order. -->
+| YOLO26m-Seg | 0.574222 | 0.873522 | 0.629038 | 0.918331 | 0.815312 | 0.863761 | 0.825309 | 0.900655 | 32.043 | 77.309 | 12.935 | 912.16 | 27,112,072 |
+| YOLO11m-Seg | 0.518307 | 0.855237 | 0.557205 | 0.914354 | 0.805049 | 0.856228 | 0.799402 | 0.884647 | 30.574 | 76.971 | 12.992 | 889.38 | 22,420,896 |
+| YOLOv8m-Seg | 0.506971 | 0.843732 | 0.542131 | 0.895403 | 0.793857 | 0.841578 | 0.797128 | 0.883076 | 27.232 | 78.112 | 12.802 | 1018.76 | 27,285,968 |
+
 
 ## 3. สรุปผลจากตาราง
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+### YOLO26m-Seg
+
+จุดเด่น: Highest Mask mAP50-95 / Highest AP75 / Highest Recall จุดที่ด้อยกว่า: forward ช้ากว่าตัวที่เร็วที่สุด; ใช้ peak allocated VRAM มากกว่าตัวที่ต่ำสุด อันดับเชิงตัวเลขในสามโมเดลคือ accuracy 1, inference speed 3, pipeline speed 2 และ VRAM ต่ำ 2 เหมาะเริ่มพิจารณาเมื่อเน้น accuracy แล้วตรวจว่าค่า latency และ memory อยู่ในข้อจำกัดของงาน
+
+### YOLO11m-Seg
+
+จุดเด่น: Fastest pipeline / Highest FPS / Lowest VRAM จุดที่ด้อยกว่า: Mask mAP50-95 ต่ำกว่าตัวนำ; forward ช้ากว่าตัวที่เร็วที่สุด อันดับเชิงตัวเลขในสามโมเดลคือ accuracy 2, inference speed 2, pipeline speed 1 และ VRAM ต่ำ 1 เหมาะพิจารณาเมื่อจำกัด memory โดยดู accuracy และ latency ประกอบ
+
+### YOLOv8m-Seg
+
+จุดเด่น: Fastest inference จุดที่ด้อยกว่า: Mask mAP50-95 ต่ำกว่าตัวนำ; ใช้ peak allocated VRAM มากกว่าตัวที่ต่ำสุด อันดับเชิงตัวเลขในสามโมเดลคือ accuracy 3, inference speed 1, pipeline speed 3 และ VRAM ต่ำ 3 เหมาะพิจารณาเมื่อเวลา forward เป็นข้อจำกัด โดยยอมรับ accuracy ที่ลดลงจากตัวนำ
 
 ## 4. Insight ที่สำคัญ
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+- Observation: YOLO26m-Seg มี Mask mAP50-95 สูงสุด 0.574222; ห่างอันดับถัดไป 0.055915 บนสเกล 0–1
+- Observation: YOLO26m-Seg นำ AP75 และ YOLO26m-Seg นำ Recall
+- Observation: forward เร็วสุดคือ YOLOv8m-Seg, pipeline เร็วสุดและ FPS สูงสุดคือ YOLO11m-Seg, VRAM ต่ำสุดคือ YOLO11m-Seg
+- คู่ที่ใกล้ที่สุดด้าน Mask mAP50-95: YOLO11m-Seg / YOLOv8m-Seg ต่าง 0.011336; ไม่ได้ทดสอบ statistical significance
+- Interpretation: การเลือกต้องแยก accuracy, forward, pipeline และ memory ไม่สรุปว่า parameters ต่ำกว่าจะเร็วหรือใช้ VRAM ต่ำกว่าเสมอ
 
 ## 5. Trade-off
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
-
 ### Accuracy
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+YOLO26m-Seg มี Mask mAP50-95 สูงสุด ต้องดู Recall และ AP75 ประกอบตามข้อจำกัด
 
 ### Speed
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+YOLOv8m-Seg มี inference mean ต่ำสุด ส่วน YOLO11m-Seg มี pipeline mean ต่ำสุด; คู่ที่ใกล้ที่สุดด้าน inference mean: YOLO26m-Seg / YOLO11m-Seg ต่าง 1.469 ms; ไม่ได้ทดสอบ statistical significance
 
 ### Memory / Resource
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+YOLO11m-Seg ใช้ peak allocated VRAM ต่ำสุด จำนวน parameters และ GFLOPs ไม่ใช่ข้อพิสูจน์เหตุเชิงสาเหตุของ latency
 
 ### ภาพรวม
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+เลือกตามข้อจำกัดจริงโดยแยก accuracy, forward, pipeline และ memory ไม่สร้าง weighted score และไม่สรุปความพร้อมใช้งาน CCTV จากชุดนี้เพียงชุดเดียว
 
 ## 6. ถ้าต้องเลือกจาก Tier นี้
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
-
 | Priority | Recommended model | Reason |
 |---|---|---|
-<!-- Add measured rows only, in fixed model order. -->
+| Accuracy | YOLO26m-Seg | Mask mAP50-95 สูงสุด |
+| Speed | YOLOv8m-Seg (inference); YOLO11m-Seg (pipeline) | เลือกตามส่วนที่เป็นข้อจำกัด |
+| Low VRAM | YOLO11m-Seg | peak allocated VRAM ต่ำสุด |
+| Balanced trade-off | YOLO26m-Seg เป็นตัวเริ่มพิจารณาแบบเน้น accuracy | ใช้เมื่อยอมรับ latency และ VRAM ในตารางได้; ไม่มีผู้ชนะสมดุลแบบไม่ขึ้นกับข้อจำกัด และไม่มีคะแนนรวม |
+
 
 ## 7. ข้อควรระวังในการตีความ
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+ผลนี้เป็น Person instance segmentation รายเฟรมบน MOTS20 ไม่ใช่ MOTS tracking; 26,894 GT instances เป็น annotation รายเฟรม ไม่ใช่จำนวนคนไม่ซ้ำ TP-only IoU/Dice พิจารณาเฉพาะคู่ที่ match ได้ ภาพต่อเนื่องสัมพันธ์กันและไม่มีการทดสอบ statistical significance ผลยังไม่ยืนยัน blur, low-light, มุมกล้อง, ระดับ occlusion หรือ deployment suitability จึงใช้เพื่อเลือก candidate for later CCTV robustness evaluation เท่านั้น
+
+คงคำเตือน NNPACK / pycocotools ตามหลักฐาน และแยก pipeline FPS ออกจากระบบที่บันทึก masks ครบวงจร
 
 ## รายละเอียดเต็ม
 
-ยังไม่รัน (NOT_RUN) — รอการอนุมัติ benchmark ของ tier นี้
+[REPORT.md](REPORT.md) · [metrics/TIER_RESULTS.csv](metrics/TIER_RESULTS.csv) · [RESULTS_SUMMARY_TH.md](RESULTS_SUMMARY_TH.md) · [Master Study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study)

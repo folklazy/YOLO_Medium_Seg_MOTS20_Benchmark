@@ -1,0 +1,60 @@
+{
+  "timestamp": "2026-10-02T08:01:30.969965+00:00",
+  "config_sha256": "9e269f18574a136d07f908f36fa0fa39649dbc4419a7931b4a5fbd1a882a52e0",
+  "protocol_sha256": "3d095a8dac90b21e4e5af978e355c2d3f5c45749dfd212446c3ef647be20c5c7",
+  "sources": {
+    "src/benchmark_adapter.py": "c13177d47f40dc59f83e5d5227d796e67c09d915c8573f169131cee39974260d",
+    "src/benchmark.py": "8fb5628f8662a3c5f70311f5049dba3dc6a8ef8eed27bc95212c1217df014fd8",
+    "src/repeat_clean_timing.py": "cc93c1b27ab22c8bfc3921edc650255d9bece6c4c4734a373fd3b30b4c597653",
+    "src/run_medium.py": "2309db164978c92fabb9a55ce81b6b6ef8a349e3e5629fbc421779a62295912e",
+    "src/validate.py": "a675fc32e2591c2eefe5b329897a74b80325ab3b8f5dad127c42ef5a1a01d7b3",
+    "src/frozen_pilot/mots.py": "01e4a750d8ed6bd1d0002a7b906f351ff9d7b59d3f6e31db633cd4b463b0f51d",
+    "src/frozen_pilot/visualize.py": "6188a131ae284dfce825903f3cd3b33e5aa9d6638d51c1d9a32bddf0016cffbf",
+    "src/frozen_pilot/metrics.py": "3f39f8bed8d62677ea1f6fbdce4415e04ccaede8b0ae0425fd63f78594980721",
+    "src/frozen_pilot/test_pipeline.py": "5e785fbf0619c5ad7818145ae29c436aec5bbe572f5121ff860e1838dab9a0a2",
+    "src/frozen_pilot/yolo_adapter.py": "d739c5477490b805773e1320e744052152dd1acc9e03719fed4a588ed7b2a36f"
+  },
+  "timing_order": [
+    [
+      "yolo26m-seg.pt",
+      "yolov8m-seg.pt",
+      "yolo11m-seg.pt"
+    ],
+    [
+      "yolov8m-seg.pt",
+      "yolo11m-seg.pt",
+      "yolo26m-seg.pt"
+    ],
+    [
+      "yolo11m-seg.pt",
+      "yolo26m-seg.pt",
+      "yolov8m-seg.pt"
+    ]
+  ],
+  "seed": 20260929,
+  "frame_list_sha256": "3bdd87baddcbae32c7ed9ad7ec01bad613d0e0b837b84c4a3fe45eb1dc3b2d78",
+  "sample_hashes": {
+    "preflight_frames.json": "5e66c48b3fd844dcd7ce9bb770c6f65df37efb2846b4ae05ace49c752eb6f601",
+    "timing_frames.json": "5e66c48b3fd844dcd7ce9bb770c6f65df37efb2846b4ae05ace49c752eb6f601",
+    "visualization_frames.json": "b64d28af8312c544f9aff083dccc9fb4a9ca7e28d8a43617388869a38f5b60c6"
+  },
+  "shared_reference": {
+    "status": "PASS",
+    "timestamp": "2026-10-02T07:57:31.231994+00:00",
+    "dataset_compatibility": "PASS",
+    "environment_compatibility": "PASS",
+    "framework_compatibility": "PASS",
+    "reference_repository": "YOLO_Large_Seg_MOTS20_Benchmark",
+    "same_frame_order_hashes_dimensions_gt_metadata": true,
+    "reference_hashes": {
+      "manifests/images.json": "3bdd87baddcbae32c7ed9ad7ec01bad613d0e0b837b84c4a3fe45eb1dc3b2d78",
+      "manifests/dataset_manifest.json": "43cd08407a5511877784dfde3d112f37b7db35a855c2bcd4f6ebccd274f91170",
+      "manifests/preflight_frames.json": "5e66c48b3fd844dcd7ce9bb770c6f65df37efb2846b4ae05ace49c752eb6f601",
+      "manifests/timing_frames.json": "5e66c48b3fd844dcd7ce9bb770c6f65df37efb2846b4ae05ace49c752eb6f601",
+      "manifests/visualization_frames.json": "b64d28af8312c544f9aff083dccc9fb4a9ca7e28d8a43617388869a38f5b60c6",
+      "manifests/framework_source_hashes.json": "8fd3e65cd72c981f8c5524efaacec9bff8a334ee02c8d9e691940a729f242670"
+    }
+  },
+  "checkpoint_manifest_sha256": "aaa93b7ced08926a0540d1145ff81f84779d77ae64be3249c655bdf21991c046",
+  "dataset_manifest_sha256": "a22f982953dac6485df97a00e9f48d24b47144855a8481ca5dd8c05007e6afe3"
+}

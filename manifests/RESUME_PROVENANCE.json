@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-10-02T08:46:59.512218+00:00",
+  "run_id": "benchmark-20261002T075505Z",
+  "session_interruption_reason": "ChatGPT/Codex usage limit; not a benchmark failure",
+  "audit_path": "manifests/benchmark-20261002T075505Z_RESUME_AUDIT.json",
+  "audit_sha256": "f66de0103c24fa943a486ff163901c1f0b7e95a3172ef7e4f42713f191fe1f6a",
+  "recovered_actual_state": [
+    {
+      "model": "yolo26m-seg.pt",
+      "completed_frames": 2862,
+      "last_frame": "MOTS20-11_000900",
+      "next_frame": null,
+      "metadata_status": "PASS",
+      "metrics_complete": true,
+      "timing_complete": false,
+      "contiguous_order": "PASS",
+      "unique_ids": "PASS",
+      "readable_rle": "PASS",
+      "frozen_config_protocol_checkpoint": "PASS",
+      "atomic_frame_format": true,
+      "temporary_files": [],
+      "quarantined_records": []
+    },
+    {
+      "model": "yolo11m-seg.pt",
+      "completed_frames": 2862,
+      "last_frame": "MOTS20-11_000900",
+      "next_frame": null,
+      "metadata_status": "PASS",
+      "metrics_complete": true,
+      "timing_complete": false,
+      "contiguous_order": "PASS",
+      "unique_ids": "PASS",
+      "readable_rle": "PASS",
+      "frozen_config_protocol_checkpoint": "PASS",
+      "atomic_frame_format": true,
+      "temporary_files": [],
+      "quarantined_records": []
+    },
+    {
+      "model": "yolov8m-seg.pt",
+      "completed_frames": 658,
+      "last_frame": "MOTS20-05_000058",
+      "next_frame": "MOTS20-05_000059",
+      "metadata_status": "RUNNING_OR_INTERRUPTED",
+      "metrics_complete": false,
+      "timing_complete": false,
+      "contiguous_order": "PASS",
+      "unique_ids": "PASS",
+      "readable_rle": "PASS",
+      "frozen_config_protocol_checkpoint": "PASS",
+      "atomic_frame_format": true,
+      "temporary_files": [],
+      "quarantined_records": []
+    }
+  ],
+  "requested_estimate_not_used": 410,
+  "original_workers_alive_at_recovery": [
+    {
+      "pid": 384334,
+      "ppid": 384333,
+      "args": ".venv/bin/python -B YOLO_Medium_Seg_MOTS20_Benchmark/src/run_medium.py benchmark-20261002T075505Z"
+    },
+    {
+      "pid": 384924,
+      "ppid": 384334,
+      "args": "/home/skyaidev/folk/Human-Body-Extraction/.venv/bin/python -B /home/skyaidev/folk/Human-Body-Extraction/YOLO_Medium_Seg_MOTS20_Benchmark/src/benchmark.py full benchmark-20261002T075505Z"
+    }
+  ],
+  "REUSED": [
+    "yolo26m-seg.pt accuracy + metrics",
+    "yolo11m-seg.pt accuracy + metrics"
+  ],
+  "RESUMED": [
+    "Session supervision resumed; existing YOLOv8m process continues saved contiguous range."
+  ],
+  "NEW": [
+    "Remaining YOLOv8m frames, missing timing, canonical conversion and reports only.",
+    "9 timing rounds completed by the retained original worker; timing source reused at finalization."
+  ],
+  "executed_segments": [],
+  "new_metric_evaluations": [],
+  "new_timing_rounds": [],
+  "runtime_driver_sha256": "d3b156d0c3e987f4f3f9583fceecd179f405fd02997bbfe5dceff402475b21d6",
+  "previous_saved_frames_preserved": "PASS"
+}

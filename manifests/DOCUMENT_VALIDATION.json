@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-02T09:05:05.553497+00:00",
+  "status": "PASS",
+  "numeric_table_cells_verified": 135,
+  "canonical_heading_order": "PASS",
+  "local_links": "PASS",
+  "presentation_policy": "Neutral tier summary; no mentor-specific closing section, per resume instruction.",
+  "document_sha256": {
+    "README.md": "f5f8c28467aa0c97a946935b1ebc7240d920de9cbebbb534431861c5a9449c1f",
+    "REPORT.md": "69595a62e224ccf55ba582b387e6d56d5f4eab1d3016d40aa0a4607fb9018f82",
+    "RESULTS_SUMMARY_TH.md": "7c2c6736736215bf3c1ffe87a37fcc11ed3e3fdfe59694bd1c61459058ffb092",
+    "PRESENTATION_SUMMARY_TH.md": "58aa4c322d7451e5851358a9455278b860e1553d46ebb44becd08b5425e857eb"
+  },
+  "template_sha256": {
+    "TIER_RESULTS_SUMMARY_TH_TEMPLATE.md": "0c9e991ca87208a242116f5231f782953b6e468af6ae9fd905cb1f607ebe2f6e",
+    "TIER_README_TEMPLATE.md": "9c72ee2b3182859543a8a0c70ed2965e6a66805d3302c4cf35257a89cf0553a8",
+    "TIER_PRESENTATION_SUMMARY_TH_TEMPLATE.md": "ee5fa4956f74fdd57405fd61ed02faac83f685a408ad5f2b2ac5362d8c5c181f",
+    "TIER_REPORT_TEMPLATE.md": "9f60b3591c46089a62abeeb703ca3a924da37b133b5875d6253311a297da4221"
+  }
+}
