@@ -18,28 +18,6 @@
 | YOLO11m-Seg | 0.518307 | 0.557205 | 0.805049 | 30.574 | 76.971 | 12.992 | 889.38 |
 | YOLOv8m-Seg | 0.506971 | 0.542131 | 0.793857 | 27.232 | 78.112 | 12.802 | 1018.76 |
 
-## สรุปผลจากตาราง
-
-อ่านร่วมกับตารางหลักด้านบน; AP50 และ TP-only IoU/Dice อ้างอิง [canonical CSV](metrics/TIER_RESULTS.csv) และ [REPORT.md](REPORT.md) ตัวเลข TP-only วัดเฉพาะคู่ที่ match ได้ จึงไม่แทนความครอบคลุม GT หรือคุณภาพทุก instance
-
-### YOLO26m-Seg
-
-นำทั้ง AP50, AP75, mAP50-95, Recall และ TP-only IoU/Dice; Recall 81.53% สนับสนุนความครอบคลุม GT ที่สูงกว่า แต่ยังมีคนพลาดหรือจับคู่ไม่ผ่าน และ mask quality เฉลี่ยนี้พิจารณาเฉพาะ TP ซึ่งอาจเป็นคนละชุด GT ระหว่างโมเดล
-
-สิ่งที่แลกคือ inference 32.043 ms ช้าที่สุด และ VRAM 912.16 MiB สูงกว่า YOLO11m แต่ต่ำกว่า YOLOv8m ส่วน pipeline 77.309 ms ใกล้ YOLO11m (76.971 ms) หากรับ resource เพิ่มได้ รุ่นนี้เป็น candidate ด้าน accuracy โดยไม่อ้างว่า pipeline ต่างกันอย่างมีนัยสำคัญ
-
-### YOLO11m-Seg
-
-mAP/AP75/Recall และ TP-only quality อยู่ระหว่าง YOLO26m กับ YOLOv8m แต่มี pipeline 76.971 ms เร็วสุดและ VRAM 889.38 MiB ต่ำสุด จึงเป็น candidate ที่มีเหตุผลเมื่อ pipeline/memory เป็นข้อจำกัด มากกว่าตัดสินจากขนาดหรือชื่อรุ่น
-
-เมื่อเลือกแทน YOLO26m จะได้ inference เร็วกว่าและ VRAM ต่ำกว่า แต่ลด mAP/AP75/Recall ตามค่าที่วัด ความต่าง pipeline เล็กจึงไม่เพียงพอจะเรียกว่า “สมดุลดีที่สุด”; ต้องตัดสินว่ายอมลด accuracy เพื่อประหยัดทรัพยากรได้หรือไม่
-
-### YOLOv8m-Seg
-
-มี inference 27.232 ms เร็วสุด แต่ pipeline 78.112 ms ช้าที่สุดและ VRAM 1018.76 MiB สูงสุด อีกทั้ง mAP/AP75/Recall และ TP-only quality ต่ำสุด จึงเป็นตัวอย่างว่าการลดเวลา forward ไม่ได้ทำให้ pipeline ทั้งชุดเร็วขึ้นตามกัน
-
-ควรเก็บเป็น candidate เฉพาะเมื่อ forward latency เป็นข้อจำกัดสำคัญ หรือใช้เป็น baseline; ถ้าเน้น pipeline/VRAM รุ่น YOLO11m มีค่าที่วัดดีกว่าพร้อม accuracy สูงกว่า ข้อสรุปนี้จำกัดเฉพาะ checkpoint และ protocol รอบนี้ ไม่ใช่การพิสูจน์ architecture หรือความพร้อมใช้งาน CCTV
-
 ## Winner ของแต่ละด้าน
 
 | ด้าน | Model | Result |
