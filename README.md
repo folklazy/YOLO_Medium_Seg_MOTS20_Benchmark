@@ -1,41 +1,42 @@
-# Medium (M) — การทดสอบ YOLO Instance Segmentation บน MOTS20
+# Medium (M) YOLO Instance Segmentation Benchmark on MOTS20
 
-## ภาพรวม
+## Overview
 
-เปรียบเทียบการแยก Person เป็นราย instance บน MOTS20 ด้วยโมเดล pretrained โดยไม่ฝึกเพิ่มหรือปรับจูน ประเมินรายเฟรมไม่ใช่การติดตามคน เอกสารนี้ใช้แนะนำ repository และเชื่อมไปยังผลเชิงตัวเลขรายงานเทคนิคและการวิเคราะห์ภาพ
+Pretrained YOLO Person instance segmentation on MOTS20 using the frozen study protocol. Three Medium checkpoints were evaluated without training, fine-tuning or adaptation. This is frame-level segmentation, not MOTS tracking.
 
-## โมเดลที่ทดสอบ
+## Models
 
-| ตระกูล | โมเดล | ขนาด |
-| --- | --- | --- |
+| Family | Model | Tier |
+|---|---|---|
 | YOLO26 | YOLO26m-Seg | Medium (M) |
 | YOLO11 | YOLO11m-Seg | Medium (M) |
 | YOLOv8 | YOLOv8m-Seg | Medium (M) |
 
-## สถานะการทดลอง
 
-COMPLETE / PASS WITH WARNINGS — ครบ 3/3 โมเดล โมเดลละ 2,862 เฟรมและ Person GT รายเฟรม 26,894 instances
-รอบทดลอง: `benchmark-20261002T075505Z` ใช้ผลที่บันทึกไว้ ไม่มีการรัน inference ใหม่เพื่อปรับเอกสาร
+## Experimental Status
 
-## ผลลัพธ์หลัก
+PASS WITH WARNINGS — COMPLETE, run `benchmark-20261002T075505Z`. All three models completed 2,862 frames and three clean timing rounds each.
 
-| โมเดล | Mask mAP50-95 | Recall | F1 | Inference (ms) | Pipeline (ms) | FPS | Peak allocated VRAM (MiB) |
+## Main Result
+
+| Model | Mask mAP50-95 | Recall | F1 | Inference ms | Pipeline ms | FPS | Peak VRAM MiB |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | YOLO26m-Seg | 0.574222 | 0.815312 | 0.863761 | 32.043 | 77.309 | 12.935 | 912.16 |
 | YOLO11m-Seg | 0.518307 | 0.805049 | 0.856228 | 30.574 | 76.971 | 12.992 | 889.38 |
 | YOLOv8m-Seg | 0.506971 | 0.793857 | 0.841578 | 27.232 | 78.112 | 12.802 | 1018.76 |
 
-## เอกสารประกอบ
 
-- [บทสรุปเชิงตัวเลข](RESULTS_SUMMARY_TH.md)
-- [การวิเคราะห์ภาพและพฤติกรรมเชิงคุณภาพ](PRESENTATION_SUMMARY_TH.md)
-- [รายงานเทคนิค](REPORT.md)
-- [โพรโทคอลการทดลอง](EXPERIMENT_PROTOCOL.md)
+## Reports
 
-## การนำทางในชุดการศึกษา
+- [PRESENTATION_SUMMARY_TH.md](PRESENTATION_SUMMARY_TH.md)
+- [RESULTS_SUMMARY_TH.md](RESULTS_SUMMARY_TH.md)
+- [REPORT.md](REPORT.md)
+- [EXPERIMENT_PROTOCOL.md](EXPERIMENT_PROTOCOL.md)
 
-[Largest (X/E)](https://github.com/folklazy/YOLO_Large_Seg_MOTS20_Benchmark) | [Second-largest (L/C)](https://github.com/folklazy/YOLO_Second_Largest_Seg_MOTS20_Benchmark) | [Medium (M)](https://github.com/folklazy/YOLO_Medium_Seg_MOTS20_Benchmark) | [Small (S)](https://github.com/folklazy/YOLO_Small_Seg_MOTS20_Benchmark) | [Nano (N)](https://github.com/folklazy/YOLO_Nano_Seg_MOTS20_Benchmark) | [การศึกษาหลัก](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study)
+## Study Navigation
 
-## หลักฐานสำหรับตรวจสอบซ้ำ
+[Largest](https://github.com/folklazy/YOLO_Large_Seg_MOTS20_Benchmark) | [Second-largest](https://github.com/folklazy/YOLO_Second_Largest_Seg_MOTS20_Benchmark) | [Medium](https://github.com/folklazy/YOLO_Medium_Seg_MOTS20_Benchmark) | [Small](https://github.com/folklazy/YOLO_Small_Seg_MOTS20_Benchmark) | [Nano](https://github.com/folklazy/YOLO_Nano_Seg_MOTS20_Benchmark) | [Master Study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study)
 
-[ค่าตัวชี้วัด](metrics/) · [การตั้งค่า](configs/) · [หลักฐานและแหล่งที่มา](manifests/) · [ภาพและกราฟ](outputs/) · [บันทึกย้อนหลัง](reports/archive/)
+## Reproducibility
+
+[configs/](configs/) · [metrics/](metrics/) · [manifests/](manifests/)

@@ -1,9 +1,3 @@
-# การตั้งค่า Medium (M)
+# Frozen Medium configuration
 
-## หน้าที่
-
-การตั้งค่ารอบ `benchmark-20261002T075505Z` ใช้โพรโทคอลที่ตรึงไว้ตาม Largest เปลี่ยนเฉพาะสมาชิกโมเดลของขนาดนี้ AP maxDet=200 แยกจาก model max_det=1000
-
-## การใช้งานและข้อควรระวัง
-
-ไม่แก้ benchmark.yaml หรือไฟล์ที่ตรึงระหว่างรอบทดลอง เพราะ manifest ตรวจ SHA256 ไว้ ใช้ [โพรโทคอล](../EXPERIMENT_PROTOCOL.md) และ [หลักฐานต้นทาง](../manifests/STANDARDIZATION.json) เมื่อตรวจย้อนหลังไฟล์ template ใช้ปรับเอกสารปัจจุบัน ไม่เปลี่ยนการวัดเดิม
+`benchmark.yaml` uses the validated Largest protocol with only Medium model membership substituted. AP maxDet=200 was frozen after the saved 100-frame preflight passed the common convergence gate. Model-level max_det=1000 remains separate. Do not edit this config during recovery: metadata and the full-freeze manifest verify its SHA256. Use the existing run ID and ordered frame manifests when recovering missing work. Framework outputs belong inside the owning experiment; datasets and checkpoints resolve from workspace root.
