@@ -1,0 +1,547 @@
+{
+  "tier": "Medium",
+  "inference_rerun": false,
+  "measured_values_changed": false,
+  "original_evidence_sha256": "e45c2bd54a878da6940e2acb8482b3c49c907c361e5514226192437b8519cc82",
+  "generator_sha256": "303e10d0c82f21fe040d617b01145d3a11cd1ff44e3f658d4aa77dbaa93adfb9",
+  "confidence": 0.25,
+  "matching_iou": 0.5,
+  "cases": [
+    {
+      "sequence": "MOTS20-05",
+      "frame": 419,
+      "regions": [
+        {
+          "target_gt_ids": [
+            2002
+          ],
+          "xyxy": [
+            231,
+            180,
+            370,
+            276
+          ]
+        },
+        {
+          "target_gt_ids": [
+            2054
+          ],
+          "xyxy": [
+            491,
+            286,
+            630,
+            382
+          ]
+        }
+      ],
+      "comparison_sha256": "19874b39918d0ea411d325e3e8c60d18c7deddcd133791d9f8e5a505e2fb932c",
+      "image_sha256": "6d7ec3be5d8c2a1ee328b449d9fcc85d713c61c95ff63d235d3b5229ecd26c95",
+      "gt_sha256": "74bc32152484c4012a65a6f6e222e24dfbf3bf536aab91f77c4abaff4a93e2e7",
+      "models": [
+        {
+          "model": "YOLO26m-Seg",
+          "prediction_sha256": "dd3a005af95f4af3b66778405bdb6add6e5f81710ec524bdf0edd05c6da6a376",
+          "full_frame_counts": {
+            "tp": 5,
+            "fp": 0,
+            "fn": 1,
+            "ignored_predictions": 1
+          },
+          "target_gt": [
+            {
+              "gt_id": 2002,
+              "matched": true,
+              "matched_iou": 0.5277777777777778,
+              "best_candidate_iou_at_conf025": 0.5277777777777778,
+              "best_candidate_prediction_index": 5
+            },
+            {
+              "gt_id": 2054,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.0008329573456425919,
+              "best_candidate_prediction_index": 0
+            }
+          ]
+        },
+        {
+          "model": "YOLO11m-Seg",
+          "prediction_sha256": "b34f953cc839af89ea5f10a6cb2ef19b2f4f76f1a85bb7437d186a2e615d66af",
+          "full_frame_counts": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 2,
+            "ignored_predictions": 2
+          },
+          "target_gt": [
+            {
+              "gt_id": 2002,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.1611823759063023,
+              "best_candidate_prediction_index": 3
+            },
+            {
+              "gt_id": 2054,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.04001344989912576,
+              "best_candidate_prediction_index": 4
+            }
+          ]
+        },
+        {
+          "model": "YOLOv8m-Seg",
+          "prediction_sha256": "c33174151661328ccfd727d32ccb537324af5c3db2d9527eb4073d9930ff9526",
+          "full_frame_counts": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 2,
+            "ignored_predictions": 1
+          },
+          "target_gt": [
+            {
+              "gt_id": 2002,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.14798206278026907,
+              "best_candidate_prediction_index": 3
+            },
+            {
+              "gt_id": 2054,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.0007514492235024691,
+              "best_candidate_prediction_index": 1
+            }
+          ]
+        }
+      ],
+      "focus_path": "case_01_focus.png",
+      "focus_sha256": "6003907c5f4497c47c322dc879635c9b7be84cc296a24166f8aae673eba46eb3",
+      "focus_size": [
+        1440,
+        1928
+      ]
+    },
+    {
+      "sequence": "MOTS20-09",
+      "frame": 263,
+      "regions": [
+        {
+          "target_gt_ids": [
+            2001,
+            2002,
+            2011,
+            2018
+          ],
+          "xyxy": [
+            988,
+            302,
+            1920,
+            805
+          ]
+        }
+      ],
+      "comparison_sha256": "18600f9c96fb1ecfb73aa302bfeab14ceb2c128048337ce866952923ff5c0a0e",
+      "image_sha256": "ca55a06d24fa0cbfd76b65c8ce9e3f98f842ee992c749a3b0db788ac8f6acf49",
+      "gt_sha256": "73c59a3d52469d81084f99c7e2a0c711a99e9fb4152f6aa839fc26e5e03fa383",
+      "models": [
+        {
+          "model": "YOLO26m-Seg",
+          "prediction_sha256": "22e69968036b86c3253eb2ed1cae48856ca6b45e7d9e7c77867ba4a9be66f15d",
+          "full_frame_counts": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 4,
+            "ignored_predictions": 1
+          },
+          "target_gt": [
+            {
+              "gt_id": 2001,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.2645772118837741,
+              "best_candidate_prediction_index": 8
+            },
+            {
+              "gt_id": 2002,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.008924289497278927,
+              "best_candidate_prediction_index": 1
+            },
+            {
+              "gt_id": 2011,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.3909697589130043,
+              "best_candidate_prediction_index": 8
+            },
+            {
+              "gt_id": 2018,
+              "matched": true,
+              "matched_iou": 0.5722708067210376,
+              "best_candidate_iou_at_conf025": 0.5722708067210376,
+              "best_candidate_prediction_index": 7
+            }
+          ]
+        },
+        {
+          "model": "YOLO11m-Seg",
+          "prediction_sha256": "14350f8050f661eb024bafbd1139b8972ae5b7d46ecee15e482b2dcc2e51914f",
+          "full_frame_counts": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 4,
+            "ignored_predictions": 1
+          },
+          "target_gt": [
+            {
+              "gt_id": 2001,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.2654602353901626,
+              "best_candidate_prediction_index": 8
+            },
+            {
+              "gt_id": 2002,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.010040803264261142,
+              "best_candidate_prediction_index": 1
+            },
+            {
+              "gt_id": 2011,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.4186960933536276,
+              "best_candidate_prediction_index": 8
+            },
+            {
+              "gt_id": 2018,
+              "matched": true,
+              "matched_iou": 0.5108411019168325,
+              "best_candidate_iou_at_conf025": 0.5108411019168325,
+              "best_candidate_prediction_index": 7
+            }
+          ]
+        },
+        {
+          "model": "YOLOv8m-Seg",
+          "prediction_sha256": "ba209f04701ece10777706bc5591682ebcebbd2e15123a641995f00bebd50d50",
+          "full_frame_counts": {
+            "tp": 8,
+            "fp": 2,
+            "fn": 5,
+            "ignored_predictions": 2
+          },
+          "target_gt": [
+            {
+              "gt_id": 2001,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.2586682427107959,
+              "best_candidate_prediction_index": 8
+            },
+            {
+              "gt_id": 2002,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.009428640502860826,
+              "best_candidate_prediction_index": 0
+            },
+            {
+              "gt_id": 2011,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.3801071063240869,
+              "best_candidate_prediction_index": 8
+            },
+            {
+              "gt_id": 2018,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.49421583209386877,
+              "best_candidate_prediction_index": 5
+            }
+          ]
+        }
+      ],
+      "focus_path": "case_02_focus.png",
+      "focus_sha256": "fb968e7b9c7b407d55f25c429a913c3cd5ebe1d84392c07c8d13a4bc277e247d",
+      "focus_size": [
+        720,
+        1928
+      ]
+    },
+    {
+      "sequence": "MOTS20-02",
+      "frame": 1,
+      "regions": [
+        {
+          "target_gt_ids": [
+            2020,
+            2023,
+            2026
+          ],
+          "xyxy": [
+            393,
+            426,
+            805,
+            710
+          ]
+        },
+        {
+          "target_gt_ids": [
+            2017
+          ],
+          "xyxy": [
+            956,
+            386,
+            1282,
+            602
+          ]
+        }
+      ],
+      "comparison_sha256": "40305ea32b85a6b597eb9abdc1f9ff52f4f2292c1bf3298db641c2af14daeae5",
+      "image_sha256": "41ff65408c5338f4a83035fd12e9f5f7b658ee82feacf4512655677032636597",
+      "gt_sha256": "3442c764c43adc9667b025d030e62d54cff9d337ea7893b1fb6c60de296e76d0",
+      "models": [
+        {
+          "model": "YOLO26m-Seg",
+          "prediction_sha256": "128ff152df82f603806094e188c830a6609bb65c9c6ed968fa4786f17d8dfbda",
+          "full_frame_counts": {
+            "tp": 8,
+            "fp": 2,
+            "fn": 4,
+            "ignored_predictions": 4
+          },
+          "target_gt": [
+            {
+              "gt_id": 2017,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.46078109616015756,
+              "best_candidate_prediction_index": 11
+            },
+            {
+              "gt_id": 2020,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.05501813784764208,
+              "best_candidate_prediction_index": 13
+            },
+            {
+              "gt_id": 2023,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.12718178502579064,
+              "best_candidate_prediction_index": 3
+            },
+            {
+              "gt_id": 2026,
+              "matched": true,
+              "matched_iou": 0.7516752069373276,
+              "best_candidate_iou_at_conf025": 0.7516752069373276,
+              "best_candidate_prediction_index": 8
+            }
+          ]
+        },
+        {
+          "model": "YOLO11m-Seg",
+          "prediction_sha256": "8ce6d33536349114414792c0172df73717305a75706c9fbe816610651aae00e6",
+          "full_frame_counts": {
+            "tp": 7,
+            "fp": 0,
+            "fn": 5,
+            "ignored_predictions": 3
+          },
+          "target_gt": [
+            {
+              "gt_id": 2017,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.0,
+              "best_candidate_prediction_index": null
+            },
+            {
+              "gt_id": 2020,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.04755397649631047,
+              "best_candidate_prediction_index": 9
+            },
+            {
+              "gt_id": 2023,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.08852680193036168,
+              "best_candidate_prediction_index": 3
+            },
+            {
+              "gt_id": 2026,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.0,
+              "best_candidate_prediction_index": null
+            }
+          ]
+        },
+        {
+          "model": "YOLOv8m-Seg",
+          "prediction_sha256": "b49c5ee6d903733381879464f0a1a4595a4eafcbd22ce4261594ab9db1e9668b",
+          "full_frame_counts": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 3,
+            "ignored_predictions": 5
+          },
+          "target_gt": [
+            {
+              "gt_id": 2017,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.40583404134806006,
+              "best_candidate_prediction_index": 11
+            },
+            {
+              "gt_id": 2020,
+              "matched": true,
+              "matched_iou": 0.55044612216884,
+              "best_candidate_iou_at_conf025": 0.55044612216884,
+              "best_candidate_prediction_index": 14
+            },
+            {
+              "gt_id": 2023,
+              "matched": false,
+              "matched_iou": null,
+              "best_candidate_iou_at_conf025": 0.14241699867197874,
+              "best_candidate_prediction_index": 3
+            },
+            {
+              "gt_id": 2026,
+              "matched": true,
+              "matched_iou": 0.639871382636656,
+              "best_candidate_iou_at_conf025": 0.639871382636656,
+              "best_candidate_prediction_index": 10
+            }
+          ]
+        }
+      ],
+      "focus_path": "case_03_focus.png",
+      "focus_sha256": "3baa7ed3a0eec7c208a6af62eef71e949de743cc16b4a0d5f8fbe9f19234ab4c",
+      "focus_size": [
+        1440,
+        1928
+      ]
+    },
+    {
+      "sequence": "MOTS20-09",
+      "frame": 1,
+      "regions": [
+        {
+          "target_gt_ids": [
+            2021,
+            2022
+          ],
+          "xyxy": [
+            1115,
+            430,
+            1496,
+            693
+          ]
+        }
+      ],
+      "comparison_sha256": "78bf4e5d170c86496ba9bc5a03801428ff12fc3d75b1c11dc97ae0127983595b",
+      "image_sha256": "e4b1c40c44d53489f191e1099156ad57d3963d8c434615750fba0065a8a572af",
+      "gt_sha256": "73c59a3d52469d81084f99c7e2a0c711a99e9fb4152f6aa839fc26e5e03fa383",
+      "models": [
+        {
+          "model": "YOLO26m-Seg",
+          "prediction_sha256": "ec21da32b2c405f6fc6f58549f95c454ecc66f685a6d1d628693dd376a2b7e7e",
+          "full_frame_counts": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0,
+            "ignored_predictions": 3
+          },
+          "target_gt": [
+            {
+              "gt_id": 2021,
+              "matched": true,
+              "matched_iou": 0.7788510421962379,
+              "best_candidate_iou_at_conf025": 0.7788510421962379,
+              "best_candidate_prediction_index": 4
+            },
+            {
+              "gt_id": 2022,
+              "matched": true,
+              "matched_iou": 0.7848317000426076,
+              "best_candidate_iou_at_conf025": 0.7848317000426076,
+              "best_candidate_prediction_index": 2
+            }
+          ]
+        },
+        {
+          "model": "YOLO11m-Seg",
+          "prediction_sha256": "e929fcb8ea55c46330dfca2be2c3190e3a7ed5ff4ac49f2a46b0fe2733a91126",
+          "full_frame_counts": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0,
+            "ignored_predictions": 3
+          },
+          "target_gt": [
+            {
+              "gt_id": 2021,
+              "matched": true,
+              "matched_iou": 0.6879947229551451,
+              "best_candidate_iou_at_conf025": 0.6879947229551451,
+              "best_candidate_prediction_index": 4
+            },
+            {
+              "gt_id": 2022,
+              "matched": true,
+              "matched_iou": 0.7093429927554334,
+              "best_candidate_iou_at_conf025": 0.7093429927554334,
+              "best_candidate_prediction_index": 3
+            }
+          ]
+        },
+        {
+          "model": "YOLOv8m-Seg",
+          "prediction_sha256": "26776c71286a803422c790723e27b64a2b6ad47c9d4f18aac0361b12d163672e",
+          "full_frame_counts": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0,
+            "ignored_predictions": 4
+          },
+          "target_gt": [
+            {
+              "gt_id": 2021,
+              "matched": true,
+              "matched_iou": 0.6983526268922529,
+              "best_candidate_iou_at_conf025": 0.6983526268922529,
+              "best_candidate_prediction_index": 4
+            },
+            {
+              "gt_id": 2022,
+              "matched": true,
+              "matched_iou": 0.7371154614462645,
+              "best_candidate_iou_at_conf025": 0.7371154614462645,
+              "best_candidate_prediction_index": 1
+            }
+          ]
+        }
+      ],
+      "focus_path": "case_04_focus.png",
+      "focus_sha256": "71dc708fad2642e9ee0d327cbf127631716d90b08af320727fd4fce0a3a16f10",
+      "focus_size": [
+        720,
+        1928
+      ]
+    }
+  ]
+}
